@@ -51,5 +51,16 @@ namespace Model
 
             Array.Resize(ref _arrayOfPersons, _arrayOfPersons.Length - 1);
         }
+
+        //TODO: its maybe need to add try catch for the case unknown person
+        /// <summary>
+        /// Method that delete person.
+        /// </summary>
+        /// <param name="person">The person being deleted.</param>
+        public void DeletePerson(Person person)
+        {
+            int index = Array.IndexOf(_arrayOfPersons, person);
+            DeletePersonByIndex(index);
+        }
     }
 }
