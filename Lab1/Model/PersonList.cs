@@ -21,7 +21,35 @@ namespace Model
             _arrayOfPersons[indexOfNewPerson] = person;
         }
 
+        /// <summary>
+        /// Method that check input index for valid.
+        /// </summary>
+        /// <param name="index">Input index.</param>
+        /// <exception cref="IndexOutOfRangeException">Index is out
+        /// of the bounds.</exception>
+        private void IsIndexInArray(int index)
+        {
+            if (index < 0 || index >= _arrayOfPersons.Length)
+            {
+                throw new IndexOutOfRangeException
+                    ("Index is out of the bounds.");
+            }
+        }
 
+        /// <summary>
+        /// Method that delete person by input index.
+        /// </summary>
+        /// <param name="index">Input index.</param>
+        public void DeletePersonByIndex(int index)
+        {
+            IsIndexInArray(index);
 
+            for (int i = index; i < _arrayOfPersons.Length - 1; i++)
+            {
+                _arrayOfPersons[i] = _arrayOfPersons[i + 1];
+            }
+
+            Array.Resize(ref _arrayOfPersons, _arrayOfPersons.Length - 1);
+        }
     }
 }
