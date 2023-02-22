@@ -16,9 +16,12 @@ namespace Model
         /// <param name="person">The person being added.</param>
         public void AddPerson(Person person)
         {
-            var indexOfNewPerson = _arrayOfPersons.Lenght;
+            var indexOfNewPerson = _arrayOfPersons.Length;
             Array.Resize(ref _arrayOfPersons, indexOfNewPerson + 1);
             _arrayOfPersons[indexOfNewPerson] = person;
         }
+
+
+
     }
 }
