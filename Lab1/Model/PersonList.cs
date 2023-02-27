@@ -21,6 +21,7 @@ namespace Model
             _arrayOfPersons[indexOfNewPerson] = person;
         }
 
+        //TODO: create try-catch constructor that will be cought the except
         /// <summary>
         /// Method that check input index for valid.
         /// </summary>
@@ -62,5 +63,18 @@ namespace Model
             int index = Array.IndexOf(_arrayOfPersons, person);
             DeletePersonByIndex(index);
         }
+
+        /// <summary>
+        /// Method that find person in array by index.
+        /// </summary>
+        /// <param name="index">Index of the person in array.</param>
+        /// <returns>Person from the array.</returns>
+        public Person SearchPerson(int index)
+        {
+            IsIndexInArray(index);
+            return _arrayOfPersons[index];
+        }
+
+
     }
 }
