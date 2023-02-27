@@ -21,7 +21,8 @@ namespace Model
             _arrayOfPersons[indexOfNewPerson] = person;
         }
 
-        //TODO: create try-catch constructor that will be cought the except
+        // TODO: create try-catch constructor that will be cought the except
+
         /// <summary>
         /// Method that check input index for valid.
         /// </summary>
@@ -53,7 +54,8 @@ namespace Model
             Array.Resize(ref _arrayOfPersons, _arrayOfPersons.Length - 1);
         }
 
-        //TODO: its maybe need to add try catch for the case unknown person
+        // TODO: its maybe need to add try catch for the case unknown person
+
         /// <summary>
         /// Method that delete person.
         /// </summary>
@@ -75,6 +77,25 @@ namespace Model
             return _arrayOfPersons[index];
         }
 
+        /// <summary>
+        /// Method that find index of person in array.
+        /// </summary>
+        /// <param name="person">Person in array.</param>
+        /// <returns>Index of person in array.
+        /// If it returns -1 person doesn't exist.</returns>
+        public int SearchIndexOfPerson(Person person)
+        {
+            int index = -1;
+            for (int i = 0; i < _arrayOfPersons.Length; i++)
+            {
+                if (_arrayOfPersons[i] == person)
+                {
+                    index = i;
+                }
+            }
+
+            return index;
+        }
 
     }
 }
