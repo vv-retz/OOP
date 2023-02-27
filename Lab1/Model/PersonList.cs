@@ -105,6 +105,10 @@ namespace Model
             Array.Resize(ref _arrayOfPersons, 0);
         }
 
-
+        /// <summary>
+        /// Method that shows the number of persons.
+        /// </summary>
+        /// <returns>Number of persons in list.</returns>
+        public int NumberOfPersons() => _arrayOfPersons.Length;
     }
 }
