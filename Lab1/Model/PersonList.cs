@@ -1,7 +1,7 @@
 namespace Model
 {
     /// <summary>
-    /// Class which describe list of persons (as an array).
+    /// Class which describes list of persons (as an array).
     /// </summary>
     internal class PersonList
     {
@@ -24,7 +24,7 @@ namespace Model
         // TODO: create try-catch constructor that will be cought the except
 
         /// <summary>
-        /// Method that check input index for valid.
+        /// Method that checks input index for valid.
         /// </summary>
         /// <param name="index">Input index.</param>
         /// <exception cref="IndexOutOfRangeException">Index is out
@@ -39,7 +39,7 @@ namespace Model
         }
 
         /// <summary>
-        /// Method that delete person by input index.
+        /// Method that deletes person by input index.
         /// </summary>
         /// <param name="index">Input index.</param>
         public void DeletePersonByIndex(int index)
@@ -57,7 +57,7 @@ namespace Model
         // TODO: its maybe need to add try catch for the case unknown person
 
         /// <summary>
-        /// Method that delete person.
+        /// Method that deletes person.
         /// </summary>
         /// <param name="person">The person being deleted.</param>
         public void DeletePerson(Person person)
@@ -67,7 +67,7 @@ namespace Model
         }
 
         /// <summary>
-        /// Method that find person in array by index.
+        /// Method that finds person in array by index.
         /// </summary>
         /// <param name="index">Index of the person in array.</param>
         /// <returns>Person from the array.</returns>
@@ -78,7 +78,7 @@ namespace Model
         }
 
         /// <summary>
-        /// Method that find index of person in array.
+        /// Method that finds index of person in array.
         /// </summary>
         /// <param name="person">Person in array.</param>
         /// <returns>Index of person in array.
@@ -96,6 +96,7 @@ namespace Model
 
             return index;
         }
+
 
     }
 }
