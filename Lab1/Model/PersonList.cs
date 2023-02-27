@@ -97,6 +97,14 @@ namespace Model
             return index;
         }
 
+        /// <summary>
+        /// Method than allows to clear the list (as an array).
+        /// </summary>
+        public void ClearList()
+        {
+            Array.Resize(ref _arrayOfPersons, 0);
+        }
+
 
     }
 }
