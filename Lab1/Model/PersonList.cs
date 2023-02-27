@@ -3,7 +3,7 @@ namespace Model
     /// <summary>
     /// Class which describes list of persons (as an array).
     /// </summary>
-    internal class PersonList
+    public class PersonList
     {
         /// <summary>
         /// Array of persons.
@@ -21,7 +21,7 @@ namespace Model
             _arrayOfPersons[indexOfNewPerson] = person;
         }
 
-        // TODO: create try-catch constructor that will be cought the except
+        // TODO: create try-catch constructor that will be caught the except
 
         /// <summary>
         /// Method that checks input index for valid.
