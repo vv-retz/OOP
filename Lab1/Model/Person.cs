@@ -96,13 +96,23 @@ namespace Model
         /// <param name="surname">Surname of person.</param>
         /// <param name="age">Age of person.</param>
         /// <param name="gender">Gender of person.</param>
-        public Person(string name, string surname, int age, Gender gender)
+        public Person
+            (string name, string surname, int age, Gender gender)
         {
             _name = name;
             _surname = surname;
             _age = age;
             _gender = gender;
 
+        }
+
+        /// <summary>
+        /// Converts class field value to string format.
+        /// </summary>
+        /// <returns>Information about person.</returns>
+        public override string ToString()
+        {
+            return $"{Name} {Surname}; Age - {Age}; Gender - {Gender}";
         }
     }
 }

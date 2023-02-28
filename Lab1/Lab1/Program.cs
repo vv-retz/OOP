@@ -40,7 +40,37 @@ namespace Lab1
             youth.AddPerson(rets2);
             youth.AddPerson(rets3);
 
+            // Print the lists
+            Console.WriteLine("List of olds:");
+            PrintList(olds);
 
+            Console.WriteLine("List of youth:");
+            PrintList(youth);
+        }
+
+        /// <summary>
+        /// Function which allows to print a certain list of people.
+        /// </summary>
+        /// <param name="personList">An instance of class PersonList.</param>
+        private static void PrintList(PersonList personList)
+        {
+            if (personList == null)
+            {
+                throw new NullReferenceException("Null reference list.");
+            }
+
+            if (personList.NumberOfPersons() != 0)
+            {
+                for (int i = 0; i < personList.NumberOfPersons(); i++)
+                {
+                    var tmpPerson = personList.SearchPerson(i);
+                    Console.WriteLine(tmpPerson.ToString());
+                }
+            }
+            else
+            {
+                Console.WriteLine("List is empty.");
+            }
         }
     }
 }
