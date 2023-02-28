@@ -70,6 +70,29 @@ namespace Lab1
             Console.WriteLine("List of youth:");
             PrintList(youth);
 
+            // Delete the second person from the 1st list
+            _ = Console.ReadKey();
+            olds.DeletePersonByIndex(1);
+            Console.WriteLine("Second person from the 1st list has been" +
+                " removed");
+
+            // Print edited lists
+            _ = Console.ReadKey();
+            Console.WriteLine("List of olds:");
+            PrintList(olds);
+
+            Console.WriteLine("List of youth:");
+            PrintList(youth);
+
+            // Clear the second list
+            _ = Console.ReadKey();
+            youth.ClearList();
+            Console.WriteLine("2nd list (youth) has been cleared");
+
+            // Print the list
+            Console.WriteLine("List of youth:");
+            PrintList(youth);
+            Console.WriteLine();
         }
 
         /// <summary>
