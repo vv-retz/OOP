@@ -41,11 +41,35 @@ namespace Lab1
             youth.AddPerson(rets3);
 
             // Print the lists
+            _ = Console.ReadKey();
             Console.WriteLine("List of olds:");
             PrintList(olds);
 
             Console.WriteLine("List of youth:");
             PrintList(youth);
+
+            // Add a new person to the 1st list
+            _ = Console.ReadKey();
+            var kharitonov = new Person
+                ("Khariton", "Kharitonov", 35, Gender.Male);
+            olds.AddPerson(kharitonov);
+            Console.WriteLine("New person has been added to the 1st list");
+
+            // Copy the second person from the 1st list to the end of
+            // the 2nd one
+            _ = Console.ReadKey();
+            youth.AddPerson(olds.SearchPerson(1));
+            Console.WriteLine("Second person from the 1st list has been" +
+                " added to the 2nd list");
+
+            // Print edited lists
+            _ = Console.ReadKey();
+            Console.WriteLine("List of olds:");
+            PrintList(olds);
+
+            Console.WriteLine("List of youth:");
+            PrintList(youth);
+
         }
 
         /// <summary>
