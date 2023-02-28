@@ -35,7 +35,7 @@ namespace Model
                 return _name;
             }
 
-            private set
+            set
             {
                 _name = value;
             }
@@ -51,7 +51,7 @@ namespace Model
                 return _surname;
             }
 
-            private set
+            set
             {
                 _surname = value;
             }
@@ -67,7 +67,7 @@ namespace Model
                 return _age;
             }
 
-            private set
+            set
             {
                 _age = value;
             }
@@ -83,7 +83,7 @@ namespace Model
                 return _gender;
             }
 
-            private set
+            set
             {
                 _gender = value;
             }
@@ -99,12 +99,18 @@ namespace Model
         public Person
             (string name, string surname, int age, Gender gender)
         {
-            _name = name;
-            _surname = surname;
-            _age = age;
-            _gender = gender;
+            Name = name;
+            Surname = surname;
+            Age = age;
+            Gender = gender;
 
         }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Person"/> class.
+        /// </summary>
+        public Person()
+        { }
 
         /// <summary>
         /// Converts class field value to string format.

@@ -93,6 +93,30 @@ namespace Lab1
             Console.WriteLine("List of youth:");
             PrintList(youth);
             Console.WriteLine();
+
+            // Check input person
+            _ = Console.ReadKey();
+
+            try
+            {
+                var inputPerson = InputPersonByConsole();
+                Console.WriteLine(inputPerson.ToString());
+            }
+            catch (Exception exception)
+            {
+                if (exception.GetType()
+                        == typeof(IndexOutOfRangeException)
+                        || exception.GetType() == typeof(FormatException)
+                        || exception.GetType() == typeof(ArgumentException))
+                {
+                    Console.WriteLine
+                    ($"Incorrect process. Error: {exception.Message}.");
+                }
+                else
+                {
+                    throw exception;
+                }
+            }
         }
 
         /// <summary>
@@ -117,6 +141,97 @@ namespace Lab1
             else
             {
                 Console.WriteLine("List is empty.");
+            }
+        }
+
+        /// <summary>
+        /// Method which allows to enter information by console.
+        /// </summary>
+        /// <returns>An instance of class Person.</returns>
+        /// <exception cref="ArgumentException">Only numbers.</exception>
+        public static Person InputPersonByConsole()
+        {
+            var person = new Person();
+
+            var actionList = new List<(Action, string)>
+            {
+                (
+                new Action(() =>
+                {
+                    Console.Write($"Enter student name: ");
+                    person.Name = Console.ReadLine();
+                }), "name"),
+
+                (new Action(() =>
+                {
+                    Console.Write($"Enter student surname: ");
+                    person.Surname = Console.ReadLine();
+                }), "surname"),
+
+                (new Action(() =>
+                {
+                    Console.Write($"Enter student age: ");
+                    _ = int.TryParse(Console.ReadLine(), out int tmpAge);
+                    person.Age = tmpAge;
+                }), "age"),
+
+                (new Action(() =>
+                {
+                    Console.Write
+                        ($"Enter student gender (1 - Male or 2 - Female): ");
+                    _ = int.TryParse(Console.ReadLine(), out int tmpGender);
+                    if (tmpGender < 1 || tmpGender > 2)
+                    {
+                        throw new IndexOutOfRangeException
+                            ("Number must be in range [1; 2].");
+                    }
+
+                    var realGender = tmpGender == 1
+                        ? Gender.Male
+                        : Gender.Female;
+                    person.Gender = realGender;
+                }), "gender")
+            };
+
+            foreach (var action in actionList)
+            {
+                ActionHandler(action.Item1, action.Item2);
+            }
+
+            return person;
+        }
+
+        /// <summary>
+        /// Method which is used for doing actions from the list.
+        /// </summary>
+        /// <param name="action">A certain action.</param>
+        /// <param name="propertyName">Additional parameter
+        /// for exception.</param>
+        private static void ActionHandler(Action action, string propertyName)
+        {
+            while (true)
+            {
+                try
+                {
+                    action.Invoke();
+                    break;
+                }
+                catch (Exception exception)
+                {
+                    if (exception.GetType()
+                        == typeof(IndexOutOfRangeException)
+                        || exception.GetType() == typeof(FormatException)
+                        || exception.GetType() == typeof(ArgumentException))
+                    {
+                        Console.WriteLine($"Incorrect {propertyName}." +
+                        $" Error: {exception.Message}" +
+                        $"Please, enter the {propertyName} again.");
+                    }
+                    else
+                    {
+                        throw exception;
+                    }
+                }
             }
         }
     }
