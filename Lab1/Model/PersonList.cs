@@ -21,8 +21,6 @@ namespace Model
             _arrayOfPersons[indexOfNewPerson] = person;
         }
 
-        // TODO: create try-catch constructor that will be caught the except
-
         /// <summary>
         /// Method that checks input index for valid.
         /// </summary>
@@ -53,8 +51,6 @@ namespace Model
 
             Array.Resize(ref _arrayOfPersons, _arrayOfPersons.Length - 1);
         }
-
-        // TODO: its maybe need to add try catch for the case unknown person
 
         /// <summary>
         /// Method that deletes person.
