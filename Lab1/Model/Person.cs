@@ -30,12 +30,12 @@ namespace Model
         /// <summary>
         /// Minimum age value.
         /// </summary>
-        private const int _minAge = 0;
+        private const int MinAge = 0;
 
         /// <summary>
         /// Maximum age value.
         /// </summary>
-        private const int _maxAge = 150;
+        private const int MaxAge = 150;
 
         /// <summary>
         /// Enter the name of person.
@@ -169,7 +169,7 @@ namespace Model
                 : femaleNames[random.Next(femaleNames.Length)];
 
             var tmpSurname = surnames[random.Next(surnames.Length)];
-            var tmpAge = random.Next(_minAge, _maxAge);
+            var tmpAge = random.Next(MinAge, MaxAge);
 
             return new Person(tmpName, tmpSurname, tmpAge, tmpGender);
         }
