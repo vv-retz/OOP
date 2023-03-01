@@ -160,32 +160,32 @@ namespace Lab1
         {
             var person = new Person();
 
-            var actionList = new List<(Action, string)>
+            var actionList = new List<(Action<string>, string)>
             {
                 (
-                new Action(() =>
+                new Action((string property) =>
                 {
-                    Console.Write($"Enter student name: ");
+                    Console.Write($"Enter student {property}: ");
                     person.Name = Console.ReadLine();
                 }), "name"),
 
-                (new Action(() =>
+                (new Action((string property) =>
                 {
-                    Console.Write($"Enter student surname: ");
+                    Console.Write($"Enter student {property}: ");
                     person.Surname = Console.ReadLine();
                 }), "surname"),
 
-                (new Action(() =>
+                (new Action((string property) =>
                 {
-                    Console.Write($"Enter student age: ");
+                    Console.Write($"Enter student {property}: ");
                     _ = int.TryParse(Console.ReadLine(), out int tmpAge);
                     person.Age = tmpAge;
                 }), "age"),
 
-                (new Action(() =>
+                (new Action((string property) =>
                 {
                     Console.Write
-                        ($"Enter student gender (1 - Male or 2 - Female): ");
+                        ($"Enter student {property} (1 - Male or 2 - Female): ");
                     _ = int.TryParse(Console.ReadLine(), out int tmpGender);
                     if (tmpGender < 1 || tmpGender > 2)
                     {
@@ -220,7 +220,7 @@ namespace Lab1
             {
                 try
                 {
-                    action.Invoke();
+                    action.Invoke(propertyName);
                     break;
                 }
                 catch (Exception exception)
