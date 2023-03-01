@@ -1,3 +1,4 @@
+using System.Text.RegularExpressions;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace Model
@@ -180,6 +181,37 @@ namespace Model
             var tmpAge = random.Next(MinAge, MaxAge);
 
             return new Person(tmpName, tmpSurname, tmpAge, tmpGender);
+        }
+
+        /// <summary>
+        /// Check language of the string.
+        /// </summary>
+        /// <param name="name">String.</param>
+        private static Language CheckStringLanguage(string name)
+        {
+            var latinSymbols = new Regex
+                (@"^[A-z]+(-[A-z])?[A-z]*$");
+            var cyrillicSymbols = new Regex
+                (@"^[А-я]+(-[А-я])?[А-я]*$");
+
+            if (string.IsNullOrEmpty(name) == false)
+            {
+                if (latinSymbols.IsMatch(name))
+                {
+                    return Language.English;
+                }
+                else if (cyrillicSymbols.IsMatch(name))
+                {
+                    return Language.Russian;
+                }
+                else
+                {
+                    throw new ArgumentException("Incorrect input." +
+                        " Please, try again!");
+                }
+            }
+
+            return Language.Unknown;
         }
     }
 }
