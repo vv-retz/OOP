@@ -1,3 +1,5 @@
+using static System.Net.Mime.MediaTypeNames;
+
 namespace Model
 {
     /// <summary>
@@ -24,6 +26,16 @@ namespace Model
         /// Gender of person.
         /// </summary>
         private Gender _gender;
+
+        /// <summary>
+        /// Minimum age value.
+        /// </summary>
+        private const int _minAge = 0;
+
+        /// <summary>
+        /// Maximum age value.
+        /// </summary>
+        private const int _maxAge = 150;
 
         /// <summary>
         /// Enter the name of person.
@@ -119,6 +131,47 @@ namespace Model
         public override string ToString()
         {
             return $"{Name} {Surname}; Age - {Age}; Gender - {Gender}";
+        }
+
+        /// <summary>
+        /// Method which allows to enter a random person.
+        /// </summary>
+        /// <returns>Random person.</returns>
+        public static Person GetRandomPerson()
+        {
+            string[] maleNames =
+            {
+                "Alex", "Tom", "John", "Vlad", "Eugene",
+                "Viktor", "Ivan", "Petr", "Khariton"
+            };
+
+            string[] femaleNames =
+            {
+                "Darya", "Valentina", "Varvara", "Julia", "Alyona",
+                "Elena", "Katerine", "Olga", "Sofia"
+            };
+
+            string[] surnames =
+            {
+                "Abramson", "Alford", "Anderson", "Bates", "Bethel",
+                "Becker", "Richards", "Pearcy", "Peterson", "Philips"
+            };
+
+            var random = new Random();
+            var tmpNumber = random.Next(1, 3);
+
+            Gender tmpGender = tmpNumber == 1
+                ? Gender.Male
+                : Gender.Female;
+
+            string tmpName = tmpGender == Gender.Male
+                ? maleNames[random.Next(maleNames.Length)]
+                : femaleNames[random.Next(femaleNames.Length)];
+
+            var tmpSurname = surnames[random.Next(surnames.Length)];
+            var tmpAge = random.Next(_minAge, _maxAge);
+
+            return new Person(tmpName, tmpSurname, tmpAge, tmpGender);
         }
     }
 }

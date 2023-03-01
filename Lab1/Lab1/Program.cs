@@ -10,7 +10,7 @@ namespace Lab1
         /// <summary>
         /// Class Main.
         /// </summary>
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             // Create two lists
             var olds = new PersonList();
@@ -117,6 +117,13 @@ namespace Lab1
                     throw exception;
                 }
             }
+
+            // Check random person
+            _ = Console.ReadKey();
+
+            Console.Write("Random person is: ");
+            var randomPerson = Person.GetRandomPerson();
+            Console.WriteLine(randomPerson.ToString());
         }
 
         /// <summary>
