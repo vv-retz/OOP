@@ -163,26 +163,26 @@ namespace Lab1
             var actionList = new List<(Action<string>, string)>
             {
                 (
-                new Action((string property) =>
+                new Action<string>((string property) =>
                 {
                     Console.Write($"Enter student {property}: ");
                     person.Name = Console.ReadLine();
                 }), "name"),
 
-                (new Action((string property) =>
+                (new Action<string>((string property) =>
                 {
                     Console.Write($"Enter student {property}: ");
                     person.Surname = Console.ReadLine();
                 }), "surname"),
 
-                (new Action((string property) =>
+                (new Action<string>((string property) =>
                 {
                     Console.Write($"Enter student {property}: ");
                     _ = int.TryParse(Console.ReadLine(), out int tmpAge);
                     person.Age = tmpAge;
                 }), "age"),
 
-                (new Action((string property) =>
+                (new Action<string>((string property) =>
                 {
                     Console.Write
                         ($"Enter student {property} (1 - Male or 2 - Female): ");
@@ -214,7 +214,7 @@ namespace Lab1
         /// <param name="action">A certain action.</param>
         /// <param name="propertyName">Additional parameter
         /// for exception.</param>
-        private static void ActionHandler(Action action, string propertyName)
+        private static void ActionHandler(Action<string> action, string propertyName)
         {
             while (true)
             {
