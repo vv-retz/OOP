@@ -1,3 +1,4 @@
+using System.Globalization;
 using System.Text.RegularExpressions;
 using static System.Net.Mime.MediaTypeNames;
 
@@ -50,7 +51,12 @@ namespace Model
 
             set
             {
-                _name = value;
+                _name = EditRegister(value);
+
+                if (_surname != null)
+                {
+                    CheckNameSurname();
+                }
             }
         }
 
@@ -66,7 +72,12 @@ namespace Model
 
             set
             {
-                _surname = value;
+                _surname = EditRegister(value);
+
+                if (_name != null)
+                {
+                    CheckNameSurname();
+                }
             }
         }
 
@@ -212,6 +223,40 @@ namespace Model
             }
 
             return Language.Unknown;
+        }
+
+        /// <summary>
+        /// Compare languages of the person's surname and name.
+        /// </summary>
+        /// <exception cref="FormatException">Only one
+        /// language.</exception>
+        private void CheckNameSurname()
+        {
+            if ((string.IsNullOrEmpty(Name) == false)
+                && (string.IsNullOrEmpty(Surname) == false))
+            {
+                var nameLanguage = CheckStringLanguage(Name);
+                var surnameLanguage = CheckStringLanguage(Surname);
+
+                if (nameLanguage != surnameLanguage)
+                {
+                    throw new FormatException("Name and Surname must" +
+                            " be only in one language.");
+                }
+            }
+        }
+
+        // TODO: double name-surname
+
+        /// <summary>
+        /// Case conversion: first letter capital, other capitals.
+        /// </summary>
+        /// <param name="word">Name or surname of the person.</param>
+        /// <returns>Edited name or surname of the person.</returns>
+        private static string EditRegister(string word)
+        {
+            return CultureInfo.CurrentCulture.TextInfo.
+                ToTitleCase(word.ToLower());
         }
     }
 }
