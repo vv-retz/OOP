@@ -51,6 +51,7 @@ namespace Model
 
             set
             {
+                _ = CheckStringLanguage(value);
                 _name = EditRegister(value);
 
                 if (_surname != null)
@@ -72,6 +73,7 @@ namespace Model
 
             set
             {
+                _ = CheckStringLanguage(value);
                 _surname = EditRegister(value);
 
                 if (_name != null)
