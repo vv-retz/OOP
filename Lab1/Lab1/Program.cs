@@ -97,6 +97,7 @@ namespace Lab1
             // Check input person
             _ = Console.ReadKey();
 
+            //TODO: duplication
             try
             {
                 var inputPerson = InputPersonByConsole();
@@ -218,6 +219,7 @@ namespace Lab1
         {
             while (true)
             {
+                //TODO: duplication
                 try
                 {
                     action.Invoke(propertyName);

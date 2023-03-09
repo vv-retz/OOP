@@ -248,8 +248,6 @@ namespace Model
             }
         }
 
-        // TODO: double name-surname
-
         /// <summary>
         /// Case conversion: first letter capital, other capitals.
         /// </summary>
