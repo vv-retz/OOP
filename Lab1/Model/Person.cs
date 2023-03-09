@@ -95,14 +95,14 @@ namespace Model
 
             set
             {
-                if (value < MinAge || value > MaxAge)
+                if (value > MinAge && value < MaxAge)
                 {
-                    throw new IndexOutOfRangeException("Age value must" +
-                          $" be in range [{MinAge}:{MaxAge}].");
+                    _age = value;
                 }
                 else
                 {
-                    _age = value;
+                    throw new IndexOutOfRangeException("Age value must" +
+                          $" be in range [{MinAge}:{MaxAge}].");
                 }
             }
         }
