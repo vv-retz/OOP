@@ -97,27 +97,9 @@ namespace Lab1
             // Check input person
             _ = Console.ReadKey();
 
-            //TODO: duplication
-            try
-            {
-                var inputPerson = InputPersonByConsole();
-                Console.WriteLine(inputPerson.ToString());
-            }
-            catch (Exception exception)
-            {
-                if (exception.GetType()
-                        == typeof(IndexOutOfRangeException)
-                        || exception.GetType() == typeof(FormatException)
-                        || exception.GetType() == typeof(ArgumentException))
-                {
-                    Console.WriteLine
-                    ($"Incorrect process. Error: {exception.Message}.");
-                }
-                else
-                {
-                    throw exception;
-                }
-            }
+            //TODO: duplication(+)
+            var inputPerson = InputPersonByConsole();
+            Console.WriteLine(inputPerson.ToString());
 
             // Check random person
             _ = Console.ReadKey();
@@ -219,7 +201,7 @@ namespace Lab1
         {
             while (true)
             {
-                //TODO: duplication
+                //TODO: duplication(+)
                 try
                 {
                     action.Invoke(propertyName);
