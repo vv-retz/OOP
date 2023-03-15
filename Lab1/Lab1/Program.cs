@@ -12,7 +12,7 @@ namespace Lab1
         /// </summary>
         private static void Main(string[] args)
         {
-            /*// Create two lists
+            // Create two lists
             var olds = new PersonList();
             var youth = new PersonList();
 
@@ -93,11 +93,10 @@ namespace Lab1
             Console.WriteLine("List of youth:");
             PrintList(youth);
             Console.WriteLine();
-            */
+
             // Check input person
             _ = Console.ReadKey();
 
-            //TODO: duplication(+)
             var inputPerson = InputPersonByConsole();
             Console.WriteLine(inputPerson.ToString());
 
@@ -201,7 +200,6 @@ namespace Lab1
         {
             while (true)
             {
-                //TODO: duplication(+)
                 try
                 {
                     action.Invoke(propertyName);
