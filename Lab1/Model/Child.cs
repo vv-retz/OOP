@@ -75,7 +75,7 @@ namespace Model
         /// <param name="mother">Child's mother</param>
         /// <param name="school">Child's school.</param>
         public Child(string name, string surname, int age,
-            GenderType gender, Adult father, Adult mother,
+            Gender gender, Adult father, Adult mother,
             string school) : base(name, surname, age, gender)
         {
             Father = father;
@@ -87,7 +87,7 @@ namespace Model
         /// Create an instance of class Child without parameters.
         /// </summary>
         public Child() : this("Unknown", "Unknown", 11,
-            GenderType.Male, null, null, null)
+            Gender.Male, null, null, null)
         { }
     }
 }
