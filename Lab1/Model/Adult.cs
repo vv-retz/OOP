@@ -103,5 +103,43 @@ namespace Model
             Gender.Male, 100000, null, null)
         { }
 
+        /// <summary>
+        /// Converts class field values to string format.
+        /// </summary>
+        /// <returns>Information about adult.</returns>
+        public override string GetInfo()
+        {
+            var marrigaeStatus = "Not married";
+            if (Spouse != null)
+            {
+                marrigaeStatus = $"Married to:" +
+                    $" {Spouse.GetPersonNameSurname()}";
+            }
+
+            var employerStatus = "Unemployed";
+            if (!string.IsNullOrEmpty(Employer))
+            {
+                employerStatus = $"Current job: {Employer}";
+            }
+
+            return $"{GetPersonInfo()};\n " +
+                $"Passport number: {PassportNumber};" +
+                $" {marrigaeStatus}; {employerStatus}\n ";
+        }
+
+        /// <summary>
+        /// Check adult's age.
+        /// </summary>
+        /// <param name="age">Adult's age.</param>
+        /// <exception cref="IndexOutOfRangeException">Age must be in a
+        /// certain range.</exception>
+        protected override void CheckAge(int age)
+        {
+            if (age is < AdultMinAge or > MaxAge)
+            {
+                throw new IndexOutOfRangeException($"Adult age value must" +
+                    $" be in range [{AdultMinAge}...{MaxAge}].");
+            }
+        }
     }
 }

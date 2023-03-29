@@ -32,12 +32,12 @@ namespace Model
         /// <summary>
         /// Minimum age value.
         /// </summary>
-        private const int MinAge = 0;
+        protected const int MinAge = 0;
 
         /// <summary>
         /// Maximum age value.
         /// </summary>
-        private const int MaxAge = 150;
+        protected const int MaxAge = 150;
 
         /// <summary>
         /// Enter the name of person.
@@ -150,50 +150,18 @@ namespace Model
         /// Converts class field value to string format.
         /// </summary>
         /// <returns>Information about person.</returns>
-        public override string ToString()
+        public string GetPersonInfo()
         {
             return $"{Name} {Surname}; Age - {Age}; Gender - {Gender}";
         }
 
         /// <summary>
-        /// Method which allows to enter a random person.
+        /// Converts certain class field values to string format.
         /// </summary>
-        /// <returns>Random person.</returns>
-        public static PersonBase GetRandomPerson()
+        /// <returns>Person's name and surname.</returns>
+        public string GetPersonNameSurname()
         {
-            string[] maleNames =
-            {
-                "Alex", "Tom", "John", "Vlad", "Eugene",
-                "Viktor", "Ivan", "Petr", "Khariton"
-            };
-
-            string[] femaleNames =
-            {
-                "Darya", "Valentina", "Varvara", "Julia", "Alyona",
-                "Elena", "Katerine", "Olga", "Sofia"
-            };
-
-            string[] surnames =
-            {
-                "Abramson", "Alford", "Anderson", "Bates", "Bethel",
-                "Becker", "Richards", "Pearcy", "Peterson", "Philips"
-            };
-
-            var random = new Random();
-            var tmpNumber = random.Next(1, 3);
-
-            Gender tmpGender = tmpNumber == 1
-                ? Gender.Male
-                : Gender.Female;
-
-            string tmpName = tmpGender == Gender.Male
-                ? maleNames[random.Next(maleNames.Length)]
-                : femaleNames[random.Next(femaleNames.Length)];
-
-            var tmpSurname = surnames[random.Next(surnames.Length)];
-            var tmpAge = random.Next(MinAge, MaxAge);
-
-            return new PersonBase(tmpName, tmpSurname, tmpAge, tmpGender);
+            return $"{Name} {Surname}";
         }
 
         /// <summary>
