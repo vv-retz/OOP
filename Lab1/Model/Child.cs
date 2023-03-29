@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    internal class Child : Person
+    internal class Child : PersonBase
     {
         /// <summary>
         /// A child's farther.

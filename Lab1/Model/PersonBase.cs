@@ -7,7 +7,7 @@ namespace Model
     /// <summary>
     /// Class which describe persons.
     /// </summary>
-    public class Person
+    public abstract class PersonBase
     {
         /// <summary>
         /// Name of person.
@@ -124,13 +124,13 @@ namespace Model
         }
 
         /// <summary>
-        /// Person's constructor.
+        /// PersonBase's constructor.
         /// </summary>
         /// <param name="name">Name of person.</param>
         /// <param name="surname">Surname of person.</param>
         /// <param name="age">Age of person.</param>
         /// <param name="gender">Gender of person.</param>
-        public Person
+        public PersonBase
             (string name, string surname, int age, Gender gender)
         {
             Name = name;
@@ -141,9 +141,9 @@ namespace Model
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Person"/> class.
+        /// Initializes a new instance of the <see cref="PersonBase"/> class.
         /// </summary>
-        public Person()
+        public PersonBase()
         { }
 
         /// <summary>
@@ -159,7 +159,7 @@ namespace Model
         /// Method which allows to enter a random person.
         /// </summary>
         /// <returns>Random person.</returns>
-        public static Person GetRandomPerson()
+        public static PersonBase GetRandomPerson()
         {
             string[] maleNames =
             {
@@ -193,7 +193,7 @@ namespace Model
             var tmpSurname = surnames[random.Next(surnames.Length)];
             var tmpAge = random.Next(MinAge, MaxAge);
 
-            return new Person(tmpName, tmpSurname, tmpAge, tmpGender);
+            return new PersonBase(tmpName, tmpSurname, tmpAge, tmpGender);
         }
 
         /// <summary>
@@ -258,5 +258,17 @@ namespace Model
             return CultureInfo.CurrentCulture.TextInfo.
                 ToTitleCase(word.ToLower());
         }
+
+        /// <summary>
+        /// Get the information about a person.
+        /// </summary>
+        /// <returns>Info about person.</returns>
+        public abstract string GetInfo();
+
+        /// <summary>
+        /// Check person's age.
+        /// </summary>
+        /// <param name="age">Person's age.</param>
+        protected abstract void CheckAge(int age);
     }
 }
