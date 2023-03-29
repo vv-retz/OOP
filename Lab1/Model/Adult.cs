@@ -49,6 +49,7 @@ namespace Model
             get => _passportNumber;
             set
             {
+                CheckPassportNumber(value);
                 _passportNumber = value;
             }
         }
@@ -73,6 +74,7 @@ namespace Model
             get => _spouse;
             set
             {
+                CheckSpouseGender(value);
                 _spouse = value;
             }
         }
@@ -138,7 +140,38 @@ namespace Model
             if (age is < AdultMinAge or > MaxAge)
             {
                 throw new IndexOutOfRangeException($"Adult age value must" +
-                    $" be in range [{AdultMinAge}...{MaxAge}].");
+                    $" be in range [{AdultMinAge};{MaxAge}].");
+            }
+        }
+
+        /// <summary>
+        /// Check gender of an adult's spouse.
+        /// </summary>
+        /// <param name="spouse">Gender of an adult's spouse.</param>
+        /// <exception cref="ArgumentException">Gender of adult's spouse
+        /// must differ from the adult.</exception>
+        private void CheckSpouseGender(Adult spouse)
+        {
+            if (spouse != null && spouse.Gender != Gender)
+            {
+                throw new ArgumentException
+                    ($"Spouse gender must be another");
+            }
+        }
+
+        /// <summary>
+        /// Check adult's passport number.
+        /// </summary>
+        /// <param name="passportNumber">Adult's passport number.</param>
+        /// <exception cref="IndexOutOfRangeException">Passport number must
+        /// be in a certain range.</exception>
+        private static void CheckPassportNumber(int passportNumber)
+        {
+            if (passportNumber is < PassportLowBound or > PassportHighBound)
+            {
+                throw new IndexOutOfRangeException($"Passport number must" +
+                    $" be in range [{PassportLowBound}:" +
+                    $" {PassportHighBound}]");
             }
         }
     }
