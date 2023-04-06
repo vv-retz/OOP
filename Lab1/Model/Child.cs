@@ -184,5 +184,64 @@ namespace Model
                 }
             }
         }
+
+        /// <summary>
+        /// Method which allows to enter a random child.
+        /// </summary>
+        /// <returns>Information about a child.</returns>
+        public static Child GetRandomPerson()
+        {
+            string[] maleNames =
+            {
+                "Liam", "Noah", "Oliver", "Elijah", "James",
+                "William", "Benjamin", "Colin", "Lucas", "Marcus"
+            };
+
+            string[] femaleNames =
+            {
+                "Dolores", "Leta", "Pansy", "Olivia", "Tracey",
+                "Charlotte", "Katie", "Mia", "Sophia", "Alicia"
+            };
+
+            string[] surnames =
+            {
+                "Smith", "Jones", "Weasley", "Williams", "Taylor",
+                "Brown", "Davies", "Carrow", "Evans", "Thomas"
+            };
+
+            string[] schools =
+            {
+                "TUSUR", "TPU", "FEFU",
+                "SFU", "MIT", "FESHU",
+                "MEI"
+            };
+
+            var random = new Random();
+            var tmpNumber = random.Next(1, 3);
+
+            Gender tmpGender = tmpNumber == 1
+                ? Gender.Male
+                : Gender.Female;
+
+            string tmpName = tmpGender == Gender.Male
+                ? maleNames[random.Next(maleNames.Length)]
+                : femaleNames[random.Next(femaleNames.Length)];
+
+            var tmpSurname = surnames[random.Next(surnames.Length)];
+
+            var tmpAge = random.Next(MinAge, ChildMaxAge);
+
+            Adult tmpFather = GetRandomParent(1);
+
+            Adult tmpMother = GetRandomParent(2);
+
+            var schoolStatus = random.Next(1, 3);
+            string? tmpSchool = schoolStatus == 1
+                ? schools[random.Next(schools.Length)]
+                : null;
+
+            return new Child(tmpName, tmpSurname, tmpAge, tmpGender,
+                tmpFather, tmpMother, tmpSchool);
+        }
     }
 }
