@@ -243,5 +243,24 @@ namespace Model
             return new Child(tmpName, tmpSurname, tmpAge, tmpGender,
                 tmpFather, tmpMother, tmpSchool);
         }
+
+        /// <summary>
+        /// Method which shows the preferred for wizard Hogwarts house.
+        /// </summary>
+        /// <returns>The chosen house.</returns>
+        public string GetGame()
+        {
+            var rnd = new Random();
+
+            string[] games =
+            {
+                "Minecraft", "CS:GO", "Dota 2", "Allody"
+            };
+
+            var preferredGame = games[rnd.Next(games.Length)];
+
+            return $"The preferred games for this kid" +
+                $" is {preferredGame}";
+        }
     }
 }
