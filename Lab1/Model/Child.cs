@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Model
 {
+    /// <summary>
+    /// Class which describes a certain child.
+    /// </summary>
     internal class Child : PersonBase
     {
         /// <summary>
@@ -36,6 +39,7 @@ namespace Model
             get => _father;
             set
             {
+                CheckParentGender(value, Gender.Female);
                 _father = value;
             }
         }
@@ -48,6 +52,7 @@ namespace Model
             get => _mother;
             set
             {
+                CheckParentGender(value, Gender.Male);
                 _mother = value;
             }
         }
@@ -72,7 +77,7 @@ namespace Model
         /// <param name="age">Age of the person.</param>
         /// <param name="gender">Gender of the person.</param>
         /// <param name="father">Child's father.</param>
-        /// <param name="mother">Child's mother</param>
+        /// <param name="mother">Child's mother.</param>
         /// <param name="school">Child's school.</param>
         public Child(string name, string surname, int age,
             Gender gender, Adult father, Adult mother,
@@ -89,5 +94,66 @@ namespace Model
         public Child() : this("Unknown", "Unknown", 11,
             Gender.Male, null, null, null)
         { }
+
+        /// <summary>
+        /// Converts class field values to string format.
+        /// </summary>
+        /// <returns>Information about child.</returns>
+        public override string GetInfo()
+        {
+            var fatherStatus = "Father: no parent";
+            var motherStatus = "Mother: no parent";
+
+            if (Father != null)
+            {
+                fatherStatus = $"Father: {Father.GetPersonNameSurname()}";
+            }
+
+            if (Mother != null)
+            {
+                motherStatus = $"Mother: {Mother.GetPersonNameSurname()}";
+            }
+
+            var schoolStatus = "Not studying";
+            if (!string.IsNullOrEmpty(School))
+            {
+                schoolStatus = $"Studying at: {School}";
+            }
+
+            return $"{GetPersonInfo()};\n {fatherStatus}; {motherStatus};" +
+                $" {schoolStatus}\n";
+        }
+
+        /// <summary>
+        /// Check child's age.
+        /// </summary>
+        /// <param name="age">Child's age.</param>
+        /// <exception cref="IndexOutOfRangeException">Age must be in a
+        /// certain range.</exception>
+        protected override void CheckAge(int age)
+        {
+            if (age is < MinAge or > ChildMaxAge)
+            {
+                throw new IndexOutOfRangeException($"Child's age must be" +
+                    $" in range [{MinAge};{ChildMaxAge}].");
+            }
+        }
+
+        /// <summary>
+        /// Check parent's gender's.
+        /// </summary>
+        /// <param name="parent">A certain adult parent.</param>
+        /// <param name="gender">Gender of the parent.</param>
+        /// <exception cref="ArgumentException">Parent's gender's must
+        /// differ from each other.</exception>
+        private static void CheckParentGender
+            (Adult parent, Gender gender)
+        {
+            if (parent != null && parent.Gender == gender)
+            {
+                throw new ArgumentException
+                    ("Parent gender must be another");
+            }
+        }
     }
 }
