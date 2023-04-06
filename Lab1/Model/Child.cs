@@ -155,5 +155,34 @@ namespace Model
                     ("Parent gender must be another");
             }
         }
+
+        /// <summary>
+        /// Get random parent for child.
+        /// </summary>
+        /// <param name="a">Parameter for random parent.</param>
+        /// <returns>A certain parent or nobody.</returns>
+        /// <exception cref="ArgumentException">Only input 1 or 2.</exception>
+        public static Adult GetRandomParent(int a)
+        {
+            var random = new Random();
+            var parentStatus = random.Next(1, 3);
+            if (parentStatus == 1)
+            {
+                return null;
+            }
+            else
+            {
+                switch (a)
+                {
+                    case 1:
+                        return Adult.GetRandomPerson(Gender.Male);
+                    case 2:
+                        return Adult.GetRandomPerson(Gender.Female);
+                    default:
+                        throw new ArgumentException
+                            ("You should input only 1 or 2");
+                }
+            }
+        }
     }
 }
