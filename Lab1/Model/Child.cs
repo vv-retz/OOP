@@ -9,7 +9,7 @@ namespace Model
     /// <summary>
     /// Class which describes a certain child.
     /// </summary>
-    internal class Child : PersonBase
+    public class Child : PersonBase
     {
         /// <summary>
         /// A child's farther.

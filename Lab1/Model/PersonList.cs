@@ -105,6 +105,6 @@ namespace Model
         /// Method that shows the number of persons.
         /// </summary>
         /// <returns>Number of persons in list.</returns>
-        public int NumberOfPersons() => _arrayOfPersons.Length;
+        public int NumberOfPersons => _arrayOfPersons.Length;
     }
 }

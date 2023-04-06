@@ -9,7 +9,7 @@ namespace Model
     /// <summary>
     /// Class which describes a certain adult.
     /// </summary>
-    internal class Adult : PersonBase
+    public class Adult : PersonBase
     {
         /// <summary>
         /// Number of adult's passport.
