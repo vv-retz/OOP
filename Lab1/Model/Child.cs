@@ -26,6 +26,7 @@ namespace Model
         /// </summary>
         private string _school;
 
+        //TODO: rename
         /// <summary>
         /// Maximum age of a child.
         /// </summary>
@@ -159,6 +160,7 @@ namespace Model
         /// <summary>
         /// Get random parent for child.
         /// </summary>
+        /// //TODO: gender
         /// <param name="a">Parameter for random parent.</param>
         /// <returns>A certain parent or nobody.</returns>
         /// <exception cref="ArgumentException">Only input 1 or 2.</exception>
