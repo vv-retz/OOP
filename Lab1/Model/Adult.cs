@@ -174,5 +174,87 @@ namespace Model
                     $" {PassportHighBound}]");
             }
         }
+
+        /// <summary>
+        /// Method which allows to enter a random adult.
+        /// </summary>
+        /// <returns>Information about an adult.</returns>
+        public static Adult GetRandomPerson
+            (Gender tmpGender = Gender.Male)
+        {
+            string[] maleNames =
+            {
+                "Liam", "Noah", "Oliver", "Elijah", "James",
+                "William", "Benjamin", "Colin", "Lucas", "Marcus"
+            };
+
+            string[] femaleNames =
+            {
+                "Dolores", "Leta", "Pansy", "Olivia", "Tracey",
+                "Charlotte", "Katie", "Mia", "Sophia", "Alicia"
+            };
+
+            string[] surnames =
+            {
+                "Smith", "Jones", "Weasley", "Williams", "Taylor",
+                "Brown", "Davies", "Carrow", "Evans", "Thomas"
+            };
+
+            string[] employers =
+            {
+                "SO UPS", "Ministry of Energy",
+                "Rosseti", "RusHydro",
+                "Rosatom", "50Hz",
+                "NYISO",
+                "Tennet",
+                "Bank of America", "Sber"
+            };
+
+            var random = new Random();
+
+            if (tmpGender == Gender.Male)
+            {
+                var tmpNumber = random.Next(1, 3);
+                tmpGender = tmpNumber == 1
+                    ? Gender.Male
+                    : Gender.Female;
+            }
+
+            string tmpName = tmpGender == Gender.Male
+                ? maleNames[random.Next(maleNames.Length)]
+                : femaleNames[random.Next(femaleNames.Length)];
+
+            var tmpSurname = surnames[random.Next(surnames.Length)];
+
+            var tmpAge = random.Next(AdultMinAge, MaxAge);
+
+            var tmpPassportNumber = random.Next
+                (PassportLowBound, PassportHighBound);
+
+            Adult tmpSpouse = null;
+            var spouseStatus = random.Next(1, 3);
+            if (spouseStatus == 1)
+            {
+                tmpSpouse = new Adult();
+
+                tmpSpouse.Gender = tmpGender == Gender.Male
+                    ? Gender.Male
+                    : Gender.Female;
+
+                tmpSpouse.Name = tmpGender == Gender.Male
+                    ? maleNames[random.Next(maleNames.Length)]
+                    : femaleNames[random.Next(femaleNames.Length)];
+
+                tmpSpouse.Surname = surnames[random.Next(surnames.Length)];
+            }
+
+            var employerStatus = random.Next(1, 3);
+            string? tmpEmployer = employerStatus == 1
+                ? employers[random.Next(employers.Length)]
+                : null;
+
+            return new Adult(tmpName, tmpSurname, tmpAge, tmpGender,
+                tmpPassportNumber, tmpSpouse, tmpEmployer);
+        }
     }
 }
