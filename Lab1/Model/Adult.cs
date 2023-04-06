@@ -256,5 +256,23 @@ namespace Model
             return new Adult(tmpName, tmpSurname, tmpAge, tmpGender,
                 tmpPassportNumber, tmpSpouse, tmpEmployer);
         }
+
+        /// <summary>
+        /// Method which shows the countries for recreation.
+        /// </summary>
+        /// <returns>The country.</returns>
+        public string GetCountry()
+        {
+            var rnd = new Random();
+
+            string[] countries =
+            {
+                "Russia", "Iran", "France"
+            };
+
+            var chosenCountry = countries[rnd.Next(countries.Length)];
+
+            return $"This man prefer to recreate in {chosenCountry}";
+        }
     }
 }

@@ -245,9 +245,9 @@ namespace Model
         }
 
         /// <summary>
-        /// Method which shows the preferred for wizard Hogwarts house.
+        /// Method which shows the preferred for game.
         /// </summary>
-        /// <returns>The chosen house.</returns>
+        /// <returns>The chosen game.</returns>
         public string GetGame()
         {
             var rnd = new Random();
