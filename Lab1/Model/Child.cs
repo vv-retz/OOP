@@ -231,7 +231,7 @@ namespace Model
 
             var tmpSurname = surnames[random.Next(surnames.Length)];
 
-            var tmpAge = random.Next(MinAge, ChildMaxAge);
+            var tmpAge = random.Next(MinAge + 1, ChildMaxAge);
 
             Adult tmpFather = GetRandomParent(1);
 

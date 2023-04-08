@@ -74,7 +74,6 @@ namespace Model
             get => _spouse;
             set
             {
-                CheckSpouseGender(value);
                 _spouse = value;
             }
         }
@@ -145,21 +144,6 @@ namespace Model
         }
 
         /// <summary>
-        /// Check gender of an adult's spouse.
-        /// </summary>
-        /// <param name="spouse">Gender of an adult's spouse.</param>
-        /// <exception cref="ArgumentException">Gender of adult's spouse
-        /// must differ from the adult.</exception>
-        private void CheckSpouseGender(Adult spouse)
-        {
-            if (spouse != null && spouse.Gender != Gender)
-            {
-                throw new ArgumentException
-                    ($"Spouse gender must be another");
-            }
-        }
-
-        /// <summary>
         /// Check adult's passport number.
         /// </summary>
         /// <param name="passportNumber">Adult's passport number.</param>
@@ -180,7 +164,7 @@ namespace Model
         /// </summary>
         /// <returns>Information about an adult.</returns>
         public static Adult GetRandomPerson
-            (Gender tmpGender = Gender.Male)
+            (Gender tmpGender = Gender.Unknown)
         {
             string[] maleNames =
             {
@@ -212,7 +196,7 @@ namespace Model
 
             var random = new Random();
 
-            if (tmpGender == Gender.Male)
+            if (tmpGender == Gender.Unknown)
             {
                 var tmpNumber = random.Next(1, 3);
                 tmpGender = tmpNumber == 1
@@ -238,10 +222,10 @@ namespace Model
                 tmpSpouse = new Adult();
 
                 tmpSpouse.Gender = tmpGender == Gender.Male
-                    ? Gender.Male
-                    : Gender.Female;
+                    ? Gender.Female
+                    : Gender.Male;
 
-                tmpSpouse.Name = tmpGender == Gender.Male
+                tmpSpouse.Name = tmpGender == Gender.Female
                     ? maleNames[random.Next(maleNames.Length)]
                     : femaleNames[random.Next(femaleNames.Length)];
 
