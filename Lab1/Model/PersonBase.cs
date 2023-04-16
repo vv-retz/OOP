@@ -51,14 +51,16 @@ namespace Model
 
             set
             {
-                //TODO:
-                _ = CheckStringLanguage(value);
-                _name = EditRegister(value);
+                //TODO(+):
+                CheckUnknownLanguage(value);
+                var tmpName = EditRegister(value);
 
                 if (_surname != null)
                 {
                     CheckNameSurname();
                 }
+
+                _name = tmpName;
             }
         }
 
@@ -74,14 +76,16 @@ namespace Model
 
             set
             {
-                //TODO:
-                _ = CheckStringLanguage(value);
-                _surname = EditRegister(value);
+                //TODO(+):
+                CheckUnknownLanguage(value);
+                var tmpSurname = EditRegister(value);
 
                 if (_name != null)
                 {
                     CheckNameSurname();
                 }
+
+                _surname = tmpSurname;
             }
         }
 
