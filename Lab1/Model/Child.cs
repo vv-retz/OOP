@@ -26,11 +26,11 @@ namespace Model
         /// </summary>
         private string _school;
 
-        //TODO: rename
+        //TODO(+): rename
         /// <summary>
         /// Maximum age of a child.
         /// </summary>
-        private const int ChildMaxAge = 16;
+        private const int MaxAge = 16;
 
         /// <summary>
         /// Enter the information about child's father.
@@ -133,10 +133,10 @@ namespace Model
         /// certain range.</exception>
         protected override void CheckAge(int age)
         {
-            if (age is < MinAge or > ChildMaxAge)
+            if (age is < MinAge or > MaxAge)
             {
                 throw new IndexOutOfRangeException($"Child's age must be" +
-                    $" in range [{MinAge};{ChildMaxAge}].");
+                    $" in range [{MinAge};{MaxAge}].");
             }
         }
 
@@ -231,7 +231,7 @@ namespace Model
 
             var tmpSurname = surnames[random.Next(surnames.Length)];
 
-            var tmpAge = random.Next(MinAge + 1, ChildMaxAge);
+            var tmpAge = random.Next(MinAge + 1, MaxAge);
 
             Adult tmpFather = GetRandomParent(1);
 
