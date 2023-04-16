@@ -109,24 +109,16 @@ namespace Model
             }
         }
 
-        //TODO: auto properties
+        //TODO(+): auto properties
         /// <summary>
         /// Enter the gender of person.
         /// </summary>
         public Gender Gender
         {
-            get
-            {
-                return _gender;
-            }
-
-            set
-            {
-                _gender = value;
-            }
+            get; set;
         }
 
-        //TODO: protected
+        //TODO(+): protected
         /// <summary>
         /// PersonBase's constructor.
         /// </summary>
@@ -134,7 +126,7 @@ namespace Model
         /// <param name="surname">Surname of person.</param>
         /// <param name="age">Age of person.</param>
         /// <param name="gender">Gender of person.</param>
-        public PersonBase
+        protected PersonBase
             (string name, string surname, int age, Gender gender)
         {
             Name = name;
@@ -144,11 +136,11 @@ namespace Model
 
         }
 
-        //TODO: protected
+        //TODO(+): protected
         /// <summary>
         /// Initializes a new instance of the <see cref="PersonBase"/> class.
         /// </summary>
-        public PersonBase()
+        protected PersonBase()
         { }
 
         /// <summary>
