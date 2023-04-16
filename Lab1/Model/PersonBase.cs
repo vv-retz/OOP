@@ -30,16 +30,6 @@ namespace Model
         private Gender _gender;
 
         /// <summary>
-        /// Minimum age value.
-        /// </summary>
-        protected const int MinAge = 0;
-
-        /// <summary>
-        /// Maximum age value.
-        /// </summary>
-        protected const int MaxAge = 150;
-
-        /// <summary>
         /// Enter the name of person.
         /// </summary>
         public string Name
@@ -101,15 +91,8 @@ namespace Model
 
             set
             {
-                if (value > MinAge && value < MaxAge)
-                {
-                    _age = value;
-                }
-                else
-                {
-                    throw new IndexOutOfRangeException("Age value must" +
-                          $" be in range [{MinAge}:{MaxAge}].");
-                }
+                CheckAge(value);
+                _age = value;
             }
         }
 

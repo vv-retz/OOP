@@ -27,6 +27,11 @@ namespace Model
         /// </summary>
         private string _school;
 
+        /// <summary>
+        /// Minimum age value.
+        /// </summary>
+        private const int MinAge = 0;
+
         //TODO(+): rename
         /// <summary>
         /// Maximum age of a child.
