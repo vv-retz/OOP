@@ -159,12 +159,13 @@ namespace Model
             }
         }
 
+        //TODO(+): rename
         /// <summary>
         /// Method which allows to enter a random adult.
         /// </summary>
         /// <returns>Information about an adult.</returns>
         public static Adult GetRandomPerson
-            (Gender tmpGender = Gender.Unknown)
+            (Gender startGender = Gender.Unknown)
         {
             string[] maleNames =
             {
@@ -196,15 +197,15 @@ namespace Model
 
             var random = new Random();
 
-            if (tmpGender == Gender.Unknown)
+            if (startGender == Gender.Unknown)
             {
                 var tmpNumber = random.Next(1, 3);
-                tmpGender = tmpNumber == 1
+                startGender = tmpNumber == 1
                     ? Gender.Male
                     : Gender.Female;
             }
 
-            string tmpName = tmpGender == Gender.Male
+            string tmpName = startGender == Gender.Male
                 ? maleNames[random.Next(maleNames.Length)]
                 : femaleNames[random.Next(femaleNames.Length)];
 
@@ -221,11 +222,11 @@ namespace Model
             {
                 tmpSpouse = new Adult();
 
-                tmpSpouse.Gender = tmpGender == Gender.Male
+                tmpSpouse.Gender = startGender == Gender.Male
                     ? Gender.Female
                     : Gender.Male;
 
-                tmpSpouse.Name = tmpGender == Gender.Female
+                tmpSpouse.Name = startGender == Gender.Female
                     ? maleNames[random.Next(maleNames.Length)]
                     : femaleNames[random.Next(femaleNames.Length)];
 
@@ -237,7 +238,7 @@ namespace Model
                 ? employers[random.Next(employers.Length)]
                 : null;
 
-            return new Adult(tmpName, tmpSurname, tmpAge, tmpGender,
+            return new Adult(tmpName, tmpSurname, tmpAge, startGender,
                 tmpPassportNumber, tmpSpouse, tmpEmployer);
         }
 
