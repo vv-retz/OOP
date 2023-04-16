@@ -25,32 +25,17 @@ namespace Model
         private int _age;
 
         /// <summary>
-        /// Gender of person.
-        /// </summary>
-        private Gender _gender;
-
-        /// <summary>
         /// Enter the name of person.
         /// </summary>
         public string Name
         {
-            get
-            {
-                return _name;
-            }
+            get => _name;
 
             set
             {
+                //TODO(+): Дублирование
                 //TODO(+):
-                CheckUnknownLanguage(value);
-                var tmpName = EditRegister(value);
-
-                if (_surname != null)
-                {
-                    CheckNameSurname();
-                }
-
-                _name = tmpName;
+                _name = CheckNameSurname(value);
             }
         }
 
@@ -59,23 +44,13 @@ namespace Model
         /// </summary>
         public string Surname
         {
-            get
-            {
-                return _surname;
-            }
+            get => _surname;
 
             set
             {
+                //TODO(+): Дублирование
                 //TODO(+):
-                CheckUnknownLanguage(value);
-                var tmpSurname = EditRegister(value);
-
-                if (_name != null)
-                {
-                    CheckNameSurname();
-                }
-
-                _surname = tmpSurname;
+                _surname = CheckNameSurname(value);
             }
         }
 
@@ -84,10 +59,7 @@ namespace Model
         /// </summary>
         public int Age
         {
-            get
-            {
-                return _age;
-            }
+            get => _age;
 
             set
             {
@@ -198,7 +170,7 @@ namespace Model
         /// </summary>
         /// <exception cref="FormatException">Only one
         /// language.</exception>
-        private void CheckNameSurname()
+        private void CheckSameLanguage()
         {
             if ((string.IsNullOrEmpty(Name) == false)
                 && (string.IsNullOrEmpty(Surname) == false))
@@ -223,6 +195,20 @@ namespace Model
         {
             return CultureInfo.CurrentCulture.TextInfo.
                 ToTitleCase(word.ToLower());
+        }
+
+        /// <summary>
+        /// Method for complex check names and surnames.
+        /// </summary>
+        /// <param name="word">Name or surname of the person.</param>
+        /// <returns>Edited and checked name or surname
+        /// of the person.</returns>
+        private string CheckNameSurname(string word)
+        {
+            CheckUnknownLanguage(word);
+            var tmpString = EditRegister(word);
+            CheckSameLanguage();
+            return tmpString;
         }
 
         /// <summary>
