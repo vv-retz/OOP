@@ -193,6 +193,20 @@ namespace Model
         }
 
         /// <summary>
+        /// Method which check string language.
+        /// </summary>
+        /// <param name="tmpStr">Input string.</param>
+        /// <exception cref="ArgumentException">Exception.</exception>
+        private void CheckUnknownLanguage(string tmpStr)
+        {
+            if (CheckStringLanguage(tmpStr) == Language.Unknown)
+            {
+                throw new ArgumentException("Incorrect input." +
+                    " Please use only characters of the same language");
+            }
+        }
+
+        /// <summary>
         /// Compare languages of the person's surname and name.
         /// </summary>
         /// <exception cref="FormatException">Only one
