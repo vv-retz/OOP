@@ -33,7 +33,6 @@ namespace Model
 
             set
             {
-                //TODO(+):
                 _name = CheckNameSurname(value, _surname);
             }
         }
@@ -47,7 +46,6 @@ namespace Model
 
             set
             {
-                //TODO(+):
                 _surname = CheckNameSurname(value, _name);
             }
         }

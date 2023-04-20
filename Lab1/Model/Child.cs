@@ -165,7 +165,6 @@ namespace Model
         /// <summary>
         /// Get random parent for child.
         /// </summary>
-        /// //TODO(+): gender
         /// <param name="gender">Gender of random person.</param>
         /// <returns>A certain parent or nobody.</returns>
         /// <exception cref="ArgumentException">Only input 1 or 2.</exception>
