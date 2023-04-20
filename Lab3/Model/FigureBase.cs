@@ -11,10 +11,6 @@ namespace Model
     /// </summary>
     public abstract class FigureBase
     {
-        /// <summary>
-        /// Count area of figure.
-        /// </summary>
-        protected abstract double FigureArea { get; }
 
         /// <summary>
         /// Method which check sign of lenght of line segment.

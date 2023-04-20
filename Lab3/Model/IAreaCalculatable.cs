@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 namespace Model
 {
     /// <summary>
-    /// Interface ICalculatable.
+    /// Interface IAreaCalculatable.
     /// </summary>
-    public interface ICalculatable
+    public interface IAreaCalculatable
     {
         /// <summary>
         /// Method which calculate something.
         /// </summary>
-        void Calculate();
+        double Calculate();
     }
 }
