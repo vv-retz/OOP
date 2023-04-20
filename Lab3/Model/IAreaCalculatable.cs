@@ -6,8 +6,9 @@ namespace Model
     public interface IAreaCalculatable
     {
         /// <summary>
-        /// Method which calculate something.
+        /// Method which calculate area.
         /// </summary>
+        /// <returns>Area.</returns>
         double Calculate();
     }
 }
