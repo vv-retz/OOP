@@ -25,7 +25,7 @@ namespace Model
         private int _age;
 
         /// <summary>
-        /// Enter the word1 of person.
+        /// Enter the name of person.
         /// </summary>
         public string Name
         {
@@ -39,7 +39,7 @@ namespace Model
         }
 
         /// <summary>
-        /// Enter the word2 of person.
+        /// Enter the surname of person.
         /// </summary>
         public string Surname
         {
@@ -109,7 +109,7 @@ namespace Model
         /// <summary>
         /// Converts certain class field values to string format.
         /// </summary>
-        /// <returns>Person's word1 and word2.</returns>
+        /// <returns>Person's name or surname.</returns>
         public string GetPersonNameSurname()
         {
             return $"{Name} {Surname}";
@@ -186,8 +186,8 @@ namespace Model
         /// <summary>
         /// Case conversion: first letter capital, other capitals.
         /// </summary>
-        /// <param name="word">Name or word2 of the person.</param>
-        /// <returns>Edited word1 or word2 of the person.</returns>
+        /// <param name="word">Name or surname of the person.</param>
+        /// <returns>Edited Name or surname of the person.</returns>
         private static string EditRegister(string word)
         {
             return CultureInfo.CurrentCulture.TextInfo.
@@ -199,7 +199,7 @@ namespace Model
         /// </summary>
         /// <param name="word1">Name or surname of the person.</param>
         /// <param name="word2">Name or surname of the person.</param>
-        /// <returns>Edited and checked word1 or word2
+        /// <returns>Edited and checked name or surname
         /// of the person.</returns>
         private string CheckNameSurname(string word1, string word2)
         {
