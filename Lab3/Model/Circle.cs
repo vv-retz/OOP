@@ -13,7 +13,7 @@ namespace Model
         private double _radius;
 
         /// <summary>
-        /// Enter the circle radius.
+        /// Gets or sets circle radius.
         /// </summary>
         public double Radius
         {

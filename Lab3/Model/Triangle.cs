@@ -23,7 +23,7 @@ namespace Model
         private double _sideC;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SideA"/> class.
+        /// Gets or sets <see cref="SideA"/>.
         /// </summary>
         public double SideA
         {
@@ -32,7 +32,7 @@ namespace Model
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SideB"/> class.
+        /// Gets or sets <see cref="SideB"/>.
         /// </summary>
         public double SideB
         {
@@ -41,7 +41,7 @@ namespace Model
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SideC"/> class.
+        /// Gets or sets <see cref="SideC"/>.
         /// </summary>
         public double SideC
         {
@@ -82,10 +82,11 @@ namespace Model
         /// <returns>Triangle area.</returns>
         public double Calculate()
         {
-            return Math.Sqrt((SideA + SideB + SideC) / 2 *
-                      ((SideA + SideB + SideC) / 2 - SideA) *
-                      ((SideA + SideB + SideC) / 2 - SideB) *
-                      ((SideA + SideB + SideC) / 2 - SideC));
+            double p = (SideA + SideB + SideC) / 2;
+            return Math.Sqrt(p *
+                      (p - SideA) *
+                      (p - SideB) *
+                      (p - SideC));
         }
     }
 }
