@@ -33,7 +33,6 @@ namespace Model
 
             set
             {
-                //TODO:
                 _name = CheckNameSurname(value);
             }
         }
@@ -47,7 +46,6 @@ namespace Model
 
             set
             {
-                //TODO:
                 _surname = CheckNameSurname(value);
             }
         }
@@ -163,15 +161,17 @@ namespace Model
         /// <summary>
         /// Compare languages of the person's surname and name.
         /// </summary>
+        /// <param name="name">Name of Person.</param>
+        /// <param name="surname">Surname of Person.</param>
         /// <exception cref="FormatException">Only one
         /// language.</exception>
-        private void CheckSameLanguage()
+        private void CheckSameLanguage(string name, string surname)
         {
-            if ((string.IsNullOrEmpty(Name) == false)
-                && (string.IsNullOrEmpty(Surname) == false))
+            if ((string.IsNullOrEmpty(name) == false)
+                && (string.IsNullOrEmpty(surname) == false))
             {
-                var nameLanguage = CheckStringLanguage(Name);
-                var surnameLanguage = CheckStringLanguage(Surname);
+                var nameLanguage = CheckStringLanguage(name);
+                var surnameLanguage = CheckStringLanguage(surname);
 
                 if (nameLanguage != surnameLanguage)
                 {
@@ -202,7 +202,7 @@ namespace Model
         {
             CheckUnknownLanguage(word);
             var tmpString = EditRegister(word);
-            CheckSameLanguage();
+            CheckSameLanguage(word, _surname);
             return tmpString;
         }
 

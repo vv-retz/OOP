@@ -165,8 +165,7 @@ namespace Model
         /// <summary>
         /// Get random parent for child.
         /// </summary>
-        /// //TODO: XML gender
-        /// <param name="a">Parameter for random parent.</param>
+        /// <param name="gender">Gender of random person.</param>
         /// <returns>A certain parent or nobody.</returns>
         /// <exception cref="ArgumentException">Only input 1 or 2.</exception>
         public static Adult GetRandomParent(Gender gender)
