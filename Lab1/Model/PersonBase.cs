@@ -25,7 +25,7 @@ namespace Model
         private int _age;
 
         /// <summary>
-        /// Enter the name of person.
+        /// Enter the word1 of person.
         /// </summary>
         public string Name
         {
@@ -33,12 +33,13 @@ namespace Model
 
             set
             {
+                //TODO(+):
                 _name = CheckNameSurname(value, _surname);
             }
         }
 
         /// <summary>
-        /// Enter the surname of person.
+        /// Enter the word2 of person.
         /// </summary>
         public string Surname
         {
@@ -46,6 +47,7 @@ namespace Model
 
             set
             {
+                //TODO(+):
                 _surname = CheckNameSurname(value, _name);
             }
         }
@@ -107,7 +109,7 @@ namespace Model
         /// <summary>
         /// Converts certain class field values to string format.
         /// </summary>
-        /// <returns>Person's name and surname.</returns>
+        /// <returns>Person's word1 and word2.</returns>
         public string GetPersonNameSurname()
         {
             return $"{Name} {Surname}";
@@ -159,21 +161,21 @@ namespace Model
         }
 
         /// <summary>
-        /// Compare languages of the person's surname and name.
+        /// Compare languages of the person's name and surname.
         /// </summary>
-        /// <param name="name">Name of Person.</param>
-        /// <param name="surname">Surname of Person.</param>
+        /// <param name="word1">Name of Person.</param>
+        /// <param name="word2">Surname of Person.</param>
         /// <exception cref="FormatException">Only one
         /// language.</exception>
-        private void CheckSameLanguage(string name, string surname)
+        private void CheckSameLanguage(string word1, string word2)
         {
-            if ((string.IsNullOrEmpty(name) == false)
-                && (string.IsNullOrEmpty(surname) == false))
+            if ((string.IsNullOrEmpty(word1) == false)
+                && (string.IsNullOrEmpty(word2) == false))
             {
-                var nameLanguage = CheckStringLanguage(name);
-                var surnameLanguage = CheckStringLanguage(surname);
+                var word1Language = CheckStringLanguage(word1);
+                var word2Language = CheckStringLanguage(word2);
 
-                if (nameLanguage != surnameLanguage)
+                if (word1Language != word2Language)
                 {
                     throw new FormatException("Name and Surname must" +
                             " be only in one language.");
@@ -184,8 +186,8 @@ namespace Model
         /// <summary>
         /// Case conversion: first letter capital, other capitals.
         /// </summary>
-        /// <param name="word">Name or surname of the person.</param>
-        /// <returns>Edited name or surname of the person.</returns>
+        /// <param name="word">Name or word2 of the person.</param>
+        /// <returns>Edited word1 or word2 of the person.</returns>
         private static string EditRegister(string word)
         {
             return CultureInfo.CurrentCulture.TextInfo.
@@ -196,8 +198,8 @@ namespace Model
         /// Method for complex check names and surnames.
         /// </summary>
         /// <param name="word1">Name or surname of the person.</param>
-        /// /// <param name="word2">Name or surname of the person.</param>
-        /// <returns>Edited and checked name or surname
+        /// <param name="word2">Name or surname of the person.</param>
+        /// <returns>Edited and checked word1 or word2
         /// of the person.</returns>
         private string CheckNameSurname(string word1, string word2)
         {
