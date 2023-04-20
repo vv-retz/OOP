@@ -8,13 +8,13 @@ namespace Model
         /// <summary>
         /// Array of persons.
         /// </summary>
-        private Person[] _arrayOfPersons = new Person[0];
+        private PersonBase[] _arrayOfPersons = new PersonBase[0];
 
         /// <summary>
         /// Function for add a person at the end of the array.
         /// </summary>
         /// <param name="person">The person being added.</param>
-        public void AddPerson(Person person)
+        public void AddPerson(PersonBase person)
         {
             var indexOfNewPerson = _arrayOfPersons.Length;
             Array.Resize(ref _arrayOfPersons, indexOfNewPerson + 1);
@@ -56,7 +56,7 @@ namespace Model
         /// Method that deletes person.
         /// </summary>
         /// <param name="person">The person being deleted.</param>
-        public void DeletePerson(Person person)
+        public void DeletePerson(PersonBase person)
         {
             int index = Array.IndexOf(_arrayOfPersons, person);
             DeletePersonByIndex(index);
@@ -66,8 +66,8 @@ namespace Model
         /// Method that finds person in array by index.
         /// </summary>
         /// <param name="index">Index of the person in array.</param>
-        /// <returns>Person from the array.</returns>
-        public Person SearchPerson(int index)
+        /// <returns>PersonBase from the array.</returns>
+        public PersonBase SearchPerson(int index)
         {
             IsIndexInArray(index);
             return _arrayOfPersons[index];
@@ -76,10 +76,10 @@ namespace Model
         /// <summary>
         /// Method that finds index of person in array.
         /// </summary>
-        /// <param name="person">Person in array.</param>
+        /// <param name="person">PersonBase in array.</param>
         /// <returns>Index of person in array.
         /// If it returns -1 person doesn't exist.</returns>
-        public int SearchIndexOfPerson(Person person)
+        public int SearchIndexOfPerson(PersonBase person)
         {
             int index = -1;
             for (int i = 0; i < _arrayOfPersons.Length; i++)
@@ -105,6 +105,6 @@ namespace Model
         /// Method that shows the number of persons.
         /// </summary>
         /// <returns>Number of persons in list.</returns>
-        public int NumberOfPersons() => _arrayOfPersons.Length;
+        public int NumberOfPersons => _arrayOfPersons.Length;
     }
 }
