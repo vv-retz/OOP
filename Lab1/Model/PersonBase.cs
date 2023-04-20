@@ -33,8 +33,7 @@ namespace Model
 
             set
             {
-                //TODO(+): Дублирование
-                //TODO(+):
+                //TODO:
                 _name = CheckNameSurname(value);
             }
         }
@@ -48,8 +47,7 @@ namespace Model
 
             set
             {
-                //TODO(+): Дублирование
-                //TODO(+):
+                //TODO:
                 _surname = CheckNameSurname(value);
             }
         }
@@ -68,7 +66,6 @@ namespace Model
             }
         }
 
-        //TODO(+): auto properties
         /// <summary>
         /// Enter the gender of person.
         /// </summary>
@@ -77,7 +74,6 @@ namespace Model
             get; set;
         }
 
-        //TODO(+): protected
         /// <summary>
         /// PersonBase's constructor.
         /// </summary>
@@ -95,7 +91,6 @@ namespace Model
 
         }
 
-        //TODO(+): protected
         /// <summary>
         /// Initializes a new instance of the <see cref="PersonBase"/> class.
         /// </summary>

@@ -164,7 +164,6 @@ namespace Model
             }
         }
 
-        //TODO(+): rename
         /// <summary>
         /// Method which allows to enter a random adult.
         /// </summary>

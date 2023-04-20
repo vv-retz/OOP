@@ -32,7 +32,6 @@ namespace Model
         /// </summary>
         private const int MinAge = 0;
 
-        //TODO(+): rename
         /// <summary>
         /// Maximum age of a child.
         /// </summary>
@@ -166,7 +165,7 @@ namespace Model
         /// <summary>
         /// Get random parent for child.
         /// </summary>
-        /// //TODO(+): gender
+        /// //TODO: XML gender
         /// <param name="a">Parameter for random parent.</param>
         /// <returns>A certain parent or nobody.</returns>
         /// <exception cref="ArgumentException">Only input 1 or 2.</exception>
