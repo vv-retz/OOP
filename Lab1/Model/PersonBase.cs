@@ -33,7 +33,7 @@ namespace Model
 
             set
             {
-                _name = CheckNameSurname(value);
+                _name = CheckNameSurname(value, _surname);
             }
         }
 
@@ -46,7 +46,7 @@ namespace Model
 
             set
             {
-                _surname = CheckNameSurname(value);
+                _surname = CheckNameSurname(value, _name);
             }
         }
 
@@ -195,14 +195,15 @@ namespace Model
         /// <summary>
         /// Method for complex check names and surnames.
         /// </summary>
-        /// <param name="word">Name or surname of the person.</param>
+        /// <param name="word1">Name or surname of the person.</param>
+        /// /// <param name="word2">Name or surname of the person.</param>
         /// <returns>Edited and checked name or surname
         /// of the person.</returns>
-        private string CheckNameSurname(string word)
+        private string CheckNameSurname(string word1, string word2)
         {
-            CheckUnknownLanguage(word);
-            var tmpString = EditRegister(word);
-            CheckSameLanguage(word, _surname);
+            CheckUnknownLanguage(word1);
+            var tmpString = EditRegister(word1);
+            CheckSameLanguage(word1, word2);
             return tmpString;
         }
 
