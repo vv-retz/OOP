@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -26,11 +27,15 @@ namespace Model
         /// </summary>
         private string _school;
 
-        //TODO: rename
+        /// <summary>
+        /// Minimum age value.
+        /// </summary>
+        private const int MinAge = 0;
+
         /// <summary>
         /// Maximum age of a child.
         /// </summary>
-        private const int ChildMaxAge = 16;
+        private const int MaxAge = 16;
 
         /// <summary>
         /// Enter the information about child's father.
@@ -133,10 +138,10 @@ namespace Model
         /// certain range.</exception>
         protected override void CheckAge(int age)
         {
-            if (age is < MinAge or > ChildMaxAge)
+            if (age is < MinAge or > MaxAge)
             {
                 throw new IndexOutOfRangeException($"Child's age must be" +
-                    $" in range [{MinAge};{ChildMaxAge}].");
+                    $" in range [{MinAge};{MaxAge}].");
             }
         }
 
@@ -160,11 +165,10 @@ namespace Model
         /// <summary>
         /// Get random parent for child.
         /// </summary>
-        /// //TODO: gender
-        /// <param name="a">Parameter for random parent.</param>
+        /// <param name="gender">Gender of random person.</param>
         /// <returns>A certain parent or nobody.</returns>
         /// <exception cref="ArgumentException">Only input 1 or 2.</exception>
-        public static Adult GetRandomParent(int a)
+        public static Adult GetRandomParent(Gender gender)
         {
             var random = new Random();
             var parentStatus = random.Next(1, 3);
@@ -174,16 +178,7 @@ namespace Model
             }
             else
             {
-                switch (a)
-                {
-                    case 1:
-                        return Adult.GetRandomPerson(Gender.Male);
-                    case 2:
-                        return Adult.GetRandomPerson(Gender.Female);
-                    default:
-                        throw new ArgumentException
-                            ("You should input only 1 or 2");
-                }
+                return Adult.GetRandomPerson(gender);
             }
         }
 
@@ -231,11 +226,11 @@ namespace Model
 
             var tmpSurname = surnames[random.Next(surnames.Length)];
 
-            var tmpAge = random.Next(MinAge + 1, ChildMaxAge);
+            var tmpAge = random.Next(MinAge + 1, MaxAge);
 
-            Adult tmpFather = GetRandomParent(1);
+            Adult tmpFather = GetRandomParent(Gender.Male);
 
-            Adult tmpMother = GetRandomParent(2);
+            Adult tmpMother = GetRandomParent(Gender.Female);
 
             var schoolStatus = random.Next(1, 3);
             string? tmpSchool = schoolStatus == 1

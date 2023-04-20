@@ -25,40 +25,15 @@ namespace Model
         private int _age;
 
         /// <summary>
-        /// Gender of person.
-        /// </summary>
-        private Gender _gender;
-
-        /// <summary>
-        /// Minimum age value.
-        /// </summary>
-        protected const int MinAge = 0;
-
-        /// <summary>
-        /// Maximum age value.
-        /// </summary>
-        protected const int MaxAge = 150;
-
-        /// <summary>
         /// Enter the name of person.
         /// </summary>
         public string Name
         {
-            get
-            {
-                return _name;
-            }
+            get => _name;
 
             set
             {
-                //TODO:
-                _ = CheckStringLanguage(value);
-                _name = EditRegister(value);
-
-                if (_surname != null)
-                {
-                    CheckNameSurname();
-                }
+                _name = CheckNameSurname(value, _surname);
             }
         }
 
@@ -67,21 +42,11 @@ namespace Model
         /// </summary>
         public string Surname
         {
-            get
-            {
-                return _surname;
-            }
+            get => _surname;
 
             set
             {
-                //TODO:
-                _ = CheckStringLanguage(value);
-                _surname = EditRegister(value);
-
-                if (_name != null)
-                {
-                    CheckNameSurname();
-                }
+                _surname = CheckNameSurname(value, _name);
             }
         }
 
@@ -90,43 +55,23 @@ namespace Model
         /// </summary>
         public int Age
         {
-            get
-            {
-                return _age;
-            }
+            get => _age;
 
             set
             {
-                if (value > MinAge && value < MaxAge)
-                {
-                    _age = value;
-                }
-                else
-                {
-                    throw new IndexOutOfRangeException("Age value must" +
-                          $" be in range [{MinAge}:{MaxAge}].");
-                }
+                CheckAge(value);
+                _age = value;
             }
         }
 
-        //TODO: auto properties
         /// <summary>
         /// Enter the gender of person.
         /// </summary>
         public Gender Gender
         {
-            get
-            {
-                return _gender;
-            }
-
-            set
-            {
-                _gender = value;
-            }
+            get; set;
         }
 
-        //TODO: protected
         /// <summary>
         /// PersonBase's constructor.
         /// </summary>
@@ -134,7 +79,7 @@ namespace Model
         /// <param name="surname">Surname of person.</param>
         /// <param name="age">Age of person.</param>
         /// <param name="gender">Gender of person.</param>
-        public PersonBase
+        protected PersonBase
             (string name, string surname, int age, Gender gender)
         {
             Name = name;
@@ -144,11 +89,10 @@ namespace Model
 
         }
 
-        //TODO: protected
         /// <summary>
         /// Initializes a new instance of the <see cref="PersonBase"/> class.
         /// </summary>
-        public PersonBase()
+        protected PersonBase()
         { }
 
         /// <summary>
@@ -163,7 +107,7 @@ namespace Model
         /// <summary>
         /// Converts certain class field values to string format.
         /// </summary>
-        /// <returns>Person's name and surname.</returns>
+        /// <returns>Person's name or surname.</returns>
         public string GetPersonNameSurname()
         {
             return $"{Name} {Surname}";
@@ -201,19 +145,35 @@ namespace Model
         }
 
         /// <summary>
-        /// Compare languages of the person's surname and name.
+        /// Method which check string language.
         /// </summary>
+        /// <param name="tmpStr">Input string.</param>
+        /// <exception cref="ArgumentException">Exception.</exception>
+        private void CheckUnknownLanguage(string tmpStr)
+        {
+            if (CheckStringLanguage(tmpStr) == Language.Unknown)
+            {
+                throw new ArgumentException("Incorrect input." +
+                    " Please use only characters of the same language");
+            }
+        }
+
+        /// <summary>
+        /// Compare languages of the person's name and surname.
+        /// </summary>
+        /// <param name="word1">Name of Person.</param>
+        /// <param name="word2">Surname of Person.</param>
         /// <exception cref="FormatException">Only one
         /// language.</exception>
-        private void CheckNameSurname()
+        private void CheckSameLanguage(string word1, string word2)
         {
-            if ((string.IsNullOrEmpty(Name) == false)
-                && (string.IsNullOrEmpty(Surname) == false))
+            if ((string.IsNullOrEmpty(word1) == false)
+                && (string.IsNullOrEmpty(word2) == false))
             {
-                var nameLanguage = CheckStringLanguage(Name);
-                var surnameLanguage = CheckStringLanguage(Surname);
+                var word1Language = CheckStringLanguage(word1);
+                var word2Language = CheckStringLanguage(word2);
 
-                if (nameLanguage != surnameLanguage)
+                if (word1Language != word2Language)
                 {
                     throw new FormatException("Name and Surname must" +
                             " be only in one language.");
@@ -225,11 +185,26 @@ namespace Model
         /// Case conversion: first letter capital, other capitals.
         /// </summary>
         /// <param name="word">Name or surname of the person.</param>
-        /// <returns>Edited name or surname of the person.</returns>
+        /// <returns>Edited Name or surname of the person.</returns>
         private static string EditRegister(string word)
         {
             return CultureInfo.CurrentCulture.TextInfo.
                 ToTitleCase(word.ToLower());
+        }
+
+        /// <summary>
+        /// Method for complex check names and surnames.
+        /// </summary>
+        /// <param name="word1">Name or surname of the person.</param>
+        /// <param name="word2">Name or surname of the person.</param>
+        /// <returns>Edited and checked name or surname
+        /// of the person.</returns>
+        private string CheckNameSurname(string word1, string word2)
+        {
+            CheckUnknownLanguage(word1);
+            var tmpString = EditRegister(word1);
+            CheckSameLanguage(word1, word2);
+            return tmpString;
         }
 
         /// <summary>
