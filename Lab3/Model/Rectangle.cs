@@ -1,9 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace Model
 {
     internal class Rectangle
@@ -24,7 +18,7 @@ namespace Model
             private double _sideB;
 
             /// <summary>
-            /// Initializes a new instance of the <see cref="SideA"/> class.
+            /// Gets or sets initializes a new instance of the <see cref="SideA"/> class.
             /// </summary>
             public double SideA
             {
@@ -33,7 +27,7 @@ namespace Model
             }
 
             /// <summary>
-            /// Initializes a new instance of the <see cref="SideB"/> class.
+            /// Gets or sets initializes a new instance of the <see cref="SideB"/> class.
             /// </summary>
             public double SideB
             {
@@ -42,19 +36,22 @@ namespace Model
             }
 
             /// <summary>
-            /// Констукрутор класса "Прямоугольник"
+            /// Initializes a new instance of the <see cref="Rectangle"/> class.
             /// </summary>
-            /// <param name="sideA">Длинна одной из сторон прямоугольника</param>
-            /// <param name="sideB">Длинна одной из сторон прямоугольника</param>
-            Rectangle(double sideA, double sideB)
+            /// <param name="sideA">The length of one of the sides of
+            /// the triangle.</param>
+            /// <param name="sideB">The length of one of the sides of
+            /// the triangle.</param>
+            public Rectangle(double sideA, double sideB)
             {
                 SideA = sideA;
                 SideB = sideB;
             }
 
             /// <summary>
-            /// Площадь прямоугольника
+            /// 
             /// </summary>
+            /// <returns></returns>
             public double Calculate()
             {
                 return SideA * SideB;

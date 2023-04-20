@@ -1,8 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Model
 {
@@ -35,8 +31,9 @@ namespace Model
         }
 
         /// <summary>
-        /// Gets circle area.
+        /// Method which calcualte circle area.
         /// </summary>
+        /// <returns>Circle area.</returns>
         public double Calculate()
         {
             return Math.Pow(Radius, 2) * Math.PI;

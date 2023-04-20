@@ -1,8 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Model
 {
@@ -81,8 +77,9 @@ namespace Model
         }
 
         /// <summary>
-        /// Gets triangle area.
+        /// Method which calcualte triangle area.
         /// </summary>
+        /// <returns>Triangle area.</returns>
         public double Calculate()
         {
             return Math.Sqrt((SideA + SideB + SideC) / 2 *
