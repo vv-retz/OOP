@@ -45,6 +45,13 @@ namespace Model
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="Rectangle"/> class.
+        /// </summary>
+        public Rectangle()
+        {
+        }
+
+        /// <summary>
         /// Method which calcualte rectangle area.
         /// </summary>
         /// <returns>Rectangle area.</returns>

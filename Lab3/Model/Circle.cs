@@ -31,6 +31,13 @@ namespace Model
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="Circle"/> class.
+        /// </summary>
+        public Circle()
+        {
+        }
+
+        /// <summary>
         /// Method which calcualte circle area.
         /// </summary>
         /// <returns>Circle area.</returns>

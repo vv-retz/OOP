@@ -60,13 +60,12 @@ namespace Model
         /// the triangle.</param>
         public Triangle(double sideA, double sideB, double sideC)
         {
-            if (sideA + sideB <= sideC
-                || sideB + sideC <= sideA
-                || sideC + sideA <= sideB)
+            if (IsTriangleValid
+                (sideA, sideB, sideC) == false)
             {
                 throw new ArgumentException("It is impossible to" +
                     " construct a triangle from the entered" +
-                    " lengths of segments.");
+                    " lengths of segments. Input lengths again.");
             }
             else
             {
@@ -74,6 +73,32 @@ namespace Model
                 SideB = sideB;
                 SideC = sideC;
             }
+        }
+
+        /// <summary>
+        /// Method than check valid of triangle side's.
+        /// </summary>
+        /// <returns>True or false.</returns>
+        private bool IsTriangleValid
+            (double sideA, double sideB, double sideC)
+        {
+            if (sideA + sideB <= sideC
+                || sideB + sideC <= sideA
+                || sideC + sideA <= sideB)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Triangle"/> class.
+        /// </summary>
+        public Triangle()
+        {
         }
 
         /// <summary>
