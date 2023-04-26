@@ -174,69 +174,41 @@ namespace ConsoleLoader
 
                 (new Action<string>((string property) =>
                 {
-                    double triangleArea = 0;
-                    while(triangleArea == 0 || double.IsNaN(triangleArea))
+                    Triangle triangle = (Triangle)figure;
+                    Console.Write($"Input {property} length: ");
+                    triangle.SideA = CheckNumberDouble(Console.ReadLine());
+
+                }), "side A"),
+                (new Action<string>((string property) =>
+                {
+                    Triangle triangle = (Triangle)figure;
+                    Console.Write($"Input {property} length: ");
+                    triangle.SideB = CheckNumberDouble(Console.ReadLine());
+
+                }), "side B"),
+                (new Action<string>((string property) =>
+                {
+                    Triangle triangle = (Triangle)figure;
+                    Console.Write($"Input {property} length: ");
+                    triangle.SideC = CheckNumberDouble(Console.ReadLine());
+
+                }), "side C"),
+                (new Action<string>((string property) =>
+                {
+
+                    try
                     {
-
                         Triangle triangle = (Triangle)figure;
-
-                        var triangleAction1 =
-                        new List<(Action<string>, string)>
-                        {
-                            (new Action<string>((string property) =>
-                            {
-                                Console.Write($"Input {property} length: ");
-                                triangle.SideA = CheckNumberDouble
-                                (Console.ReadLine());
-
-                            }), "side A"),
-                            (new Action<string>((string property) =>
-                            {
-                                Console.Write($"Input {property} length: ");
-                                triangle.SideB = CheckNumberDouble
-                                (Console.ReadLine());
-
-                            }), "side B"),
-                            (new Action<string>((string property) =>
-                            {
-                                Console.Write($"Input {property} length: ");
-                                triangle.SideC = CheckNumberDouble
-                                (Console.ReadLine());
-
-                            }), "side C"),
-                            (new Action<string>((string property) =>
-                            {
-
-                                try
-                                {
-                                    triangle = new Triangle
-                                        (triangle.SideA,
-                                        triangle.SideB,
-                                        triangle.SideC);
-                                }
-                                catch (ArgumentException ex)
-                                {
-                                    Console.WriteLine(ex.Message);
-                                }
-                            }), "triangle"),
-                            (new Action<string>((string property) =>
-                            {
-                                triangleArea =
-                                ((IAreaCalculatable)triangle).Calculate();
-
-                            }), "area"),
-
-                        };
-
-                        foreach (var action in
-                            triangleAction1)
-                        {
-                            ActionHandler(action.Item1, action.Item2);
-                        }
-
+                        triangle = new Triangle
+                            (triangle.SideA,
+                            triangle.SideB,
+                            triangle.SideC);
+                    }
+                    catch (ArgumentException ex)
+                    {
+                        Console.WriteLine(ex.Message);
                     }
                 }), "triangle"),
-
                 (new Action<string>((string property) =>
                 {
                     Triangle triangle = (Triangle)figure;
