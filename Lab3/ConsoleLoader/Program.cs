@@ -7,6 +7,8 @@ namespace ConsoleLoader
     /// </summary>
     internal class Program
     {
+        // TODO: Interface vs Abstract method
+
         /// <summary>
         /// Method Main.
         /// </summary>
@@ -44,6 +46,7 @@ namespace ConsoleLoader
                 if (!isParsed || actionNumber < 1 || actionNumber > 2)
                 {
                     Console.WriteLine("1 or 2?");
+                    continue;
                 }
 
                 switch (actionNumber)
@@ -109,6 +112,7 @@ namespace ConsoleLoader
         /// <exception cref="ArgumentException">Only numbers.</exception>
         public static void CalculateAreaByConsole()
         {
+            // TODO: Разделить на отдельные методы
             IAreaCalculatable figure = new Rectangle();
 
             var startAction = new Action<string>((string property) =>
@@ -242,7 +246,7 @@ namespace ConsoleLoader
                     Triangle triangle = (Triangle)figure;
                     Console.WriteLine($"{property}" +
                     $" of a {triangle.GetType().Name}: " +
-                    ((IAreaCalculatable)triangle).Calculate());
+                    triangle.Calculate());
                     Console.WriteLine();
 
                 }), "Area"),
