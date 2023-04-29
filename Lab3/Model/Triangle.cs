@@ -60,7 +60,7 @@ namespace Model
         /// the triangle.</param>
         public Triangle(double sideA, double sideB, double sideC)
         {
-            if (!IsTriangleValid(sideA, sideB, sideC))
+            if (IsTriangleValid(sideA, sideB, sideC) == false)
             {
                 throw new ArgumentException("It is impossible to" +
                     " construct a triangle from the entered" +
@@ -79,9 +79,9 @@ namespace Model
         private bool IsTriangleValid
             (double sideA, double sideB, double sideC)
         {
-            return sideA + sideB <= sideC
-                || sideB + sideC <= sideA
-                || sideC + sideA <= sideB;
+            return sideA + sideB > sideC
+                && sideB + sideC > sideA
+                && sideC + sideA > sideB;
         }
 
         /// <summary>

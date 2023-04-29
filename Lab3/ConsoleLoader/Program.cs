@@ -112,9 +112,7 @@ namespace ConsoleLoader
         /// <exception cref="ArgumentException">Only numbers.</exception>
         public static void CalculateAreaByConsole()
         {
-            // TODO: Разделить на отдельные методы
-            IAreaCalculatable figure = new Rectangle();
-
+            // TODO(+): Разделить на отдельные методы
             var startAction = new Action<string>((string property) =>
             {
                 Console.Write
@@ -131,13 +129,13 @@ namespace ConsoleLoader
                 switch (figureType)
                 {
                     case 1:
-                        figure = new Rectangle();
+                        RectangleArea();
                         break;
                     case 2:
-                        figure = new Triangle();
+                        TriangleArea();
                         break;
                     case 3:
-                        figure = new Circle();
+                        CircleArea();
                         break;
                     default:
                         break;
@@ -145,25 +143,54 @@ namespace ConsoleLoader
 
             });
 
+            ActionHandler(startAction, "figure ID");
+        }
+
+        /// <summary>
+        /// A method that checks the valid format of input string.
+        /// </summary>
+        /// <param name="inputString">Input string.</param>
+        /// <returns>Number.</returns>
+        /// <exception cref="ArgumentException">Exception.</exception>
+        private static double CheckNumberDouble(string inputString)
+        {
+            if (inputString.Contains('.'))
+            {
+                inputString = inputString.Replace('.', ',');
+            }
+
+            bool isParsed = double.TryParse(inputString,
+                        out double checkNumber);
+
+            return !isParsed
+                ? throw new ArgumentException("Input number only")
+                : checkNumber;
+        }
+
+        /// <summary>
+        /// Method which allows to calculate area of some rectangle.
+        /// </summary>
+        /// <exception cref="ArgumentException">Only numbers.</exception>
+        public static void RectangleArea()
+        {
+            Rectangle rectangle = new Rectangle();
+
             var rectangleAction = new List<(Action<string>, string)>
             {
                 (new Action<string>((string property) =>
                 {
-                    Rectangle rectangle = (Rectangle)figure;
                     Console.Write($"Input {property} length: ");
                     rectangle.SideA = CheckNumberDouble(Console.ReadLine());
 
                 }), "side A"),
                 (new Action<string>((string property) =>
                 {
-                    Rectangle rectangle = (Rectangle)figure;
                     Console.Write($"Input {property} length: ");
                     rectangle.SideB = CheckNumberDouble(Console.ReadLine());
 
                 }), "side B"),
                 (new Action<string>((string property) =>
                 {
-                    Rectangle rectangle = (Rectangle)figure;
                     Console.WriteLine($"{property}" +
                     $" of a {rectangle.GetType().Name}: " +
                     ((IAreaCalculatable)rectangle).Calculate());
@@ -173,6 +200,21 @@ namespace ConsoleLoader
 
             };
 
+            foreach (var action in rectangleAction)
+            {
+                ActionHandler(action.Item1, action.Item2);
+            }
+
+        }
+
+        /// <summary>
+        /// Method which allows to calculate area of some triangle.
+        /// </summary>
+        /// <exception cref="ArgumentException">Only numbers.</exception>
+        public static void TriangleArea()
+        {
+            Triangle triangle = new Triangle();
+
             var triangleAction = new List<(Action<string>, string)>
             {
 
@@ -181,8 +223,6 @@ namespace ConsoleLoader
                     double triangleArea = 0;
                     while(triangleArea == 0 || double.IsNaN(triangleArea))
                     {
-
-                        Triangle triangle = (Triangle)figure;
 
                         var triangleAction1 =
                         new List<(Action<string>, string)>
@@ -243,7 +283,6 @@ namespace ConsoleLoader
 
                 (new Action<string>((string property) =>
                 {
-                    Triangle triangle = (Triangle)figure;
                     Console.WriteLine($"{property}" +
                     $" of a {triangle.GetType().Name}: " +
                     triangle.Calculate());
@@ -252,18 +291,31 @@ namespace ConsoleLoader
                 }), "Area"),
             };
 
+            foreach (var action in triangleAction)
+            {
+                ActionHandler(action.Item1, action.Item2);
+            }
+
+        }
+
+        /// <summary>
+        /// Method which allows to calculate area of some circle.
+        /// </summary>
+        /// <exception cref="ArgumentException">Only numbers.</exception>
+        public static void CircleArea()
+        {
+            Circle circle = new Circle();
+
             var circleAction = new List<(Action<string>, string)>
             {
                 (new Action<string>((string property) =>
                 {
-                    Circle circle = (Circle)figure;
                     Console.Write($"Input {property} length: ");
                     circle.Radius = CheckNumberDouble(Console.ReadLine());
 
                 }), "radius"),
                 (new Action<string>((string property) =>
                 {
-                    Circle circle = (Circle)figure;
                     Console.WriteLine($"{property}" +
                     $" of a {circle.GetType().Name}: " +
                     ((IAreaCalculatable)circle).Calculate());
@@ -273,42 +325,11 @@ namespace ConsoleLoader
 
             };
 
-            ActionHandler(startAction, "figure ID");
-
-            var calculateActionDictionary =
-                new Dictionary<Type, List<(Action<string>, string)>>
-            {
-                {typeof(Rectangle), rectangleAction },
-                {typeof(Triangle), triangleAction },
-                {typeof(Circle), circleAction },
-            };
-
-            foreach (var action in
-                calculateActionDictionary[figure.GetType()])
+            foreach (var action in circleAction)
             {
                 ActionHandler(action.Item1, action.Item2);
             }
-        }
 
-        /// <summary>
-        /// A method that checks the valid format of input string.
-        /// </summary>
-        /// <param name="inputString">Input string.</param>
-        /// <returns>Number.</returns>
-        /// <exception cref="ArgumentException">Exception.</exception>
-        private static double CheckNumberDouble(string inputString)
-        {
-            if (inputString.Contains('.'))
-            {
-                inputString = inputString.Replace('.', ',');
-            }
-
-            bool isParsed = double.TryParse(inputString,
-                        out double checkNumber);
-
-            return !isParsed
-                ? throw new ArgumentException("Input number only")
-                : checkNumber;
         }
     }
 }
