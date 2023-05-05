@@ -12,7 +12,6 @@ namespace ConsoleLoader
         /// <summary>
         /// Method Main.
         /// </summary>
-        /// <param name="args">Arguments.</param>
         private static void Main()
         {
             Console.WriteLine("Hello, World! Let's calculate" +
@@ -112,19 +111,12 @@ namespace ConsoleLoader
         /// <exception cref="ArgumentException">Only numbers.</exception>
         public static void CalculateAreaByConsole()
         {
-            // TODO(+): Разделить на отдельные методы
             var startAction = new Action<string>((string property) =>
             {
                 Console.Write
                         ($"Input the {property} (1 - rectangle," +
                         "2 - triangle, 3 - circle):");
                 _ = int.TryParse(Console.ReadLine(), out int figureType);
-
-                if (figureType < 1 || figureType > 3)
-                {
-                    throw new IndexOutOfRangeException
-                        ("Number must be in range [1; 3].");
-                }
 
                 switch (figureType)
                 {
@@ -138,7 +130,8 @@ namespace ConsoleLoader
                         CircleArea();
                         break;
                     default:
-                        break;
+                        throw new IndexOutOfRangeException(
+                            "Number must be in range [1; 3].");
                 }
 
             });
@@ -154,11 +147,7 @@ namespace ConsoleLoader
         /// <exception cref="ArgumentException">Exception.</exception>
         private static double CheckNumberDouble(string inputString)
         {
-            if (inputString.Contains('.'))
-            {
-                inputString = inputString.Replace('.', ',');
-            }
-
+            inputString = inputString.Replace('.', ',');
             bool isParsed = double.TryParse(inputString,
                         out double checkNumber);
 
@@ -217,7 +206,6 @@ namespace ConsoleLoader
 
             var triangleAction = new List<(Action<string>, string)>
             {
-
                 (new Action<string>((string property) =>
                 {
                     double triangleArea = 0;
@@ -250,7 +238,6 @@ namespace ConsoleLoader
                             }), "side C"),
                             (new Action<string>((string property) =>
                             {
-
                                 try
                                 {
                                     triangle = new Triangle
