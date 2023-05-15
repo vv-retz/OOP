@@ -1,4 +1,4 @@
-﻿namespace WinFormsApp
+namespace WinFormsApp
 {
     partial class MainForm
     {
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.motionDataGridView = new System.Windows.Forms.DataGridView();
+            this.FigureDataGridView = new System.Windows.Forms.DataGridView();
             this.FigureTypeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Parameters = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AreaColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -37,32 +37,30 @@
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AddButton = new System.Windows.Forms.Button();
             this.RemoveButton = new System.Windows.Forms.Button();
             this.ClearButton = new System.Windows.Forms.Button();
-            this.Filter = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.motionDataGridView)).BeginInit();
+            this.FilterButton = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.FigureDataGridView)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // motionDataGridView
+            // FigureDataGridView
             // 
-            this.motionDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.motionDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.motionDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.FigureDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.FigureDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.FigureDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.FigureTypeColumn,
             this.Parameters,
             this.AreaColumn});
-            this.motionDataGridView.Location = new System.Drawing.Point(6, 22);
-            this.motionDataGridView.Name = "motionDataGridView";
-            this.motionDataGridView.RowHeadersVisible = false;
-            this.motionDataGridView.RowTemplate.Height = 25;
-            this.motionDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.motionDataGridView.Size = new System.Drawing.Size(406, 249);
-            this.motionDataGridView.TabIndex = 0;
+            this.FigureDataGridView.Location = new System.Drawing.Point(6, 22);
+            this.FigureDataGridView.Name = "FigureDataGridView";
+            this.FigureDataGridView.RowHeadersVisible = false;
+            this.FigureDataGridView.RowTemplate.Height = 25;
+            this.FigureDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.FigureDataGridView.Size = new System.Drawing.Size(406, 249);
+            this.FigureDataGridView.TabIndex = 0;
             // 
             // FigureTypeColumn
             // 
@@ -81,7 +79,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.motionDataGridView);
+            this.groupBox1.Controls.Add(this.FigureDataGridView);
             this.groupBox1.Location = new System.Drawing.Point(12, 27);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(418, 277);
@@ -92,8 +90,7 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem,
-            this.helpToolStripMenuItem});
+            this.fileToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(444, 24);
@@ -112,28 +109,16 @@
             // loadToolStripMenuItem
             // 
             this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
-            this.loadToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.loadToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
             this.loadToolStripMenuItem.Text = "Load...";
+            this.loadToolStripMenuItem.Click += new System.EventHandler(this.LoadToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
             this.saveToolStripMenuItem.Text = "Save...";
-            // 
-            // helpToolStripMenuItem
-            // 
-            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.aboutToolStripMenuItem});
-            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
-            this.helpToolStripMenuItem.Text = "Help";
-            // 
-            // aboutToolStripMenuItem
-            // 
-            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
-            this.aboutToolStripMenuItem.Text = "About Area Calculator";
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.SaveToolStripMenuItem_Click);
             // 
             // AddButton
             // 
@@ -143,6 +128,7 @@
             this.AddButton.TabIndex = 2;
             this.AddButton.Text = "Add";
             this.AddButton.UseVisualStyleBackColor = true;
+            this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
             // RemoveButton
             // 
@@ -152,6 +138,7 @@
             this.RemoveButton.TabIndex = 3;
             this.RemoveButton.Text = "Remove";
             this.RemoveButton.UseVisualStyleBackColor = true;
+            this.RemoveButton.Click += new System.EventHandler(this.RemoveButton_Click);
             // 
             // ClearButton
             // 
@@ -161,22 +148,24 @@
             this.ClearButton.TabIndex = 4;
             this.ClearButton.Text = "Clear";
             this.ClearButton.UseVisualStyleBackColor = true;
+            this.ClearButton.Click += new System.EventHandler(this.ClearButton_Click);
             // 
-            // Filter
+            // FilterButton
             // 
-            this.Filter.Location = new System.Drawing.Point(330, 313);
-            this.Filter.Name = "Filter";
-            this.Filter.Size = new System.Drawing.Size(100, 23);
-            this.Filter.TabIndex = 5;
-            this.Filter.Text = "Filter";
-            this.Filter.UseVisualStyleBackColor = true;
+            this.FilterButton.Location = new System.Drawing.Point(330, 313);
+            this.FilterButton.Name = "FilterButton";
+            this.FilterButton.Size = new System.Drawing.Size(100, 23);
+            this.FilterButton.TabIndex = 5;
+            this.FilterButton.Text = "Filter";
+            this.FilterButton.UseVisualStyleBackColor = true;
+            this.FilterButton.Click += new System.EventHandler(this.FilterButton_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(444, 348);
-            this.Controls.Add(this.Filter);
+            this.Controls.Add(this.FilterButton);
             this.Controls.Add(this.ClearButton);
             this.Controls.Add(this.RemoveButton);
             this.Controls.Add(this.AddButton);
@@ -188,7 +177,7 @@
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Area Calculator";
-            ((System.ComponentModel.ISupportInitialize)(this.motionDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FigureDataGridView)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -199,7 +188,7 @@
 
         #endregion
 
-        private DataGridView motionDataGridView;
+        private DataGridView FigureDataGridView;
         private DataGridViewTextBoxColumn FigureTypeColumn;
         private DataGridViewTextBoxColumn Parameters;
         private DataGridViewTextBoxColumn AreaColumn;
@@ -208,11 +197,9 @@
         private ToolStripMenuItem fileToolStripMenuItem;
         private ToolStripMenuItem loadToolStripMenuItem;
         private ToolStripMenuItem saveToolStripMenuItem;
-        private ToolStripMenuItem helpToolStripMenuItem;
-        private ToolStripMenuItem aboutToolStripMenuItem;
         private Button AddButton;
         private Button RemoveButton;
         private Button ClearButton;
-        private Button Filter;
+        private Button FilterButton;
     }
 }

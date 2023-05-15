@@ -1,13 +1,16 @@
 using System;
+using System.Xml.Serialization;
 
 namespace Model
 {
     /// <summary>
     /// FigureBase class.
     /// </summary>
+    [XmlInclude(typeof(Rectangle))]
+    [XmlInclude(typeof(Triangle))]
+    [XmlInclude(typeof(Circle))]
     public abstract class FigureBase
     {
-
         /// <summary>
         /// Method which check sign of lenght of line segment.
         /// </summary>
