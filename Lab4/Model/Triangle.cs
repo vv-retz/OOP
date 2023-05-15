@@ -92,16 +92,32 @@ namespace Model
         }
 
         /// <summary>
+        /// Figure type field's property sent to DataGridView.
+        /// </summary>
+        public override string FigureType => "Triangle";
+
+        /// <summary>
+        /// Parameters field's property sent to DataGridView.
+        /// </summary>
+        public override string Parameters => $"A = {SideA}, " +
+            $"B = {SideB}, C = {SideC}";
+
+        /// <summary>
+        /// Area field's property.
+        /// </summary>
+        public override double Area => Calculate();
+
+        /// <summary>
         /// Method which calcualte triangle area.
         /// </summary>
         /// <returns>Triangle area.</returns>
         public double Calculate()
         {
             double p = (SideA + SideB + SideC) / 2;
-            return Math.Sqrt(p *
+            return Math.Round(Math.Sqrt(p *
                       (p - SideA) *
                       (p - SideB) *
-                      (p - SideC));
+                      (p - SideC)), 3);
         }
     }
 }

@@ -38,12 +38,27 @@ namespace Model
         }
 
         /// <summary>
+        /// Figure type field's property sent to DataGridView.
+        /// </summary>
+        public override string FigureType => "Circle";
+
+        /// <summary>
+        /// Parameters field's property sent to DataGridView.
+        /// </summary>
+        public override string Parameters => $"radius = {Radius}";
+
+        /// <summary>
+        /// Area field's property.
+        /// </summary>
+        public override double Area => Calculate();
+
+        /// <summary>
         /// Method which calcualte circle area.
         /// </summary>
         /// <returns>Circle area.</returns>
         public double Calculate()
         {
-            return Math.Pow(Radius, 2) * Math.PI;
+            return Math.Round(Math.Pow(Radius, 2) * Math.PI, 3);
         }
     }
 }

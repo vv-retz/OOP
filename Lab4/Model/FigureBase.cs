@@ -1,5 +1,6 @@
 using System;
 using System.Xml.Serialization;
+using System.ComponentModel;
 
 namespace Model
 {
@@ -11,6 +12,21 @@ namespace Model
     [XmlInclude(typeof(Circle))]
     public abstract class FigureBase
     {
+        /// <summary>
+        /// Figure type field's property sent to DataGridView.
+        /// </summary>
+        public abstract string FigureType { get; }
+
+        /// <summary>
+        /// Parameters field's property sent to DataGridView.
+        /// </summary>
+        public abstract string Parameters { get; }
+
+        /// <summary>
+        /// Area field's property.
+        /// </summary>
+        public abstract double Area { get; }
+
         /// <summary>
         /// Method which check sign of lenght of line segment.
         /// </summary>

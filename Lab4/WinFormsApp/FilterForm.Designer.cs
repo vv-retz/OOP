@@ -29,9 +29,9 @@ namespace WinFormsApp
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.FigureTypeCheckedListBox = new System.Windows.Forms.CheckedListBox();
             this.FilterButton = new System.Windows.Forms.Button();
             this.ResetButton = new System.Windows.Forms.Button();
-            this.FigureTypeCheckedListBox = new System.Windows.Forms.CheckedListBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.UpperBoundTextBox = new System.Windows.Forms.TextBox();
             this.LowerBoundTextBox = new System.Windows.Forms.TextBox();
@@ -50,6 +50,15 @@ namespace WinFormsApp
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Figure type";
+            // 
+            // FigureTypeCheckedListBox
+            // 
+            this.FigureTypeCheckedListBox.CheckOnClick = true;
+            this.FigureTypeCheckedListBox.FormattingEnabled = true;
+            this.FigureTypeCheckedListBox.Location = new System.Drawing.Point(6, 22);
+            this.FigureTypeCheckedListBox.Name = "FigureTypeCheckedListBox";
+            this.FigureTypeCheckedListBox.Size = new System.Drawing.Size(188, 58);
+            this.FigureTypeCheckedListBox.TabIndex = 3;
             // 
             // FilterButton
             // 
@@ -70,15 +79,6 @@ namespace WinFormsApp
             this.ResetButton.Text = "Reset";
             this.ResetButton.UseVisualStyleBackColor = true;
             this.ResetButton.Click += new System.EventHandler(this.ResetButton_Click);
-            // 
-            // FigureTypeCheckedListBox
-            // 
-            this.FigureTypeCheckedListBox.CheckOnClick = true;
-            this.FigureTypeCheckedListBox.FormattingEnabled = true;
-            this.FigureTypeCheckedListBox.Location = new System.Drawing.Point(6, 22);
-            this.FigureTypeCheckedListBox.Name = "FigureTypeCheckedListBox";
-            this.FigureTypeCheckedListBox.Size = new System.Drawing.Size(188, 58);
-            this.FigureTypeCheckedListBox.TabIndex = 3;
             // 
             // groupBox2
             // 
@@ -138,7 +138,7 @@ namespace WinFormsApp
             this.MaximumSize = new System.Drawing.Size(239, 274);
             this.MinimumSize = new System.Drawing.Size(239, 274);
             this.Name = "FilterForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Filter";
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);

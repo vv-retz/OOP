@@ -1,3 +1,5 @@
+using System;
+
 namespace Model
 {
     /// <summary>
@@ -52,12 +54,28 @@ namespace Model
         }
 
         /// <summary>
+        /// Figure type field's property sent to DataGridView.
+        /// </summary>
+        public override string FigureType => "Rectangle";
+
+        /// <summary>
+        /// Parameters field's property sent to DataGridView.
+        /// </summary>
+        public override string Parameters => $"A = {SideA}, " +
+            $"B = {SideB}";
+
+        /// <summary>
+        /// Area field's property.
+        /// </summary>
+        public override double Area => Calculate();
+
+        /// <summary>
         /// Method which calcualte rectangle area.
         /// </summary>
         /// <returns>Rectangle area.</returns>
         public double Calculate()
         {
-            return SideA * SideB;
+            return Math.Round(SideA * SideB, 3);
         }
     }
 }

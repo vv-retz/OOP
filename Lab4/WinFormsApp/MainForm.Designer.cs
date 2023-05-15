@@ -28,11 +28,10 @@ namespace WinFormsApp
         /// </summary>
         private void InitializeComponent()
         {
-            this.FigureDataGridView = new System.Windows.Forms.DataGridView();
-            this.FigureTypeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Parameters = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AreaColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.FigureDataGridView = new System.Windows.Forms.DataGridView();
+            this.figureEventArgsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -41,41 +40,17 @@ namespace WinFormsApp
             this.RemoveButton = new System.Windows.Forms.Button();
             this.ClearButton = new System.Windows.Forms.Button();
             this.FilterButton = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.FigureDataGridView)).BeginInit();
+            this.figureListFilteredBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.figureEventArgsBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.figureEventArgsBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.FigureDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.figureEventArgsBindingSource)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.figureListFilteredBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.figureEventArgsBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.figureEventArgsBindingSource2)).BeginInit();
             this.SuspendLayout();
-            // 
-            // FigureDataGridView
-            // 
-            this.FigureDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.FigureDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.FigureDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.FigureTypeColumn,
-            this.Parameters,
-            this.AreaColumn});
-            this.FigureDataGridView.Location = new System.Drawing.Point(6, 22);
-            this.FigureDataGridView.Name = "FigureDataGridView";
-            this.FigureDataGridView.RowHeadersVisible = false;
-            this.FigureDataGridView.RowTemplate.Height = 25;
-            this.FigureDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.FigureDataGridView.Size = new System.Drawing.Size(406, 249);
-            this.FigureDataGridView.TabIndex = 0;
-            // 
-            // FigureTypeColumn
-            // 
-            this.FigureTypeColumn.HeaderText = "FigureType";
-            this.FigureTypeColumn.Name = "FigureTypeColumn";
-            // 
-            // Parameters
-            // 
-            this.Parameters.HeaderText = "ParametersColumn";
-            this.Parameters.Name = "Parameters";
-            // 
-            // AreaColumn
-            // 
-            this.AreaColumn.HeaderText = "Area";
-            this.AreaColumn.Name = "AreaColumn";
             // 
             // groupBox1
             // 
@@ -86,6 +61,22 @@ namespace WinFormsApp
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Figure Info";
+            // 
+            // FigureDataGridView
+            // 
+            this.FigureDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.FigureDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.FigureDataGridView.Location = new System.Drawing.Point(6, 22);
+            this.FigureDataGridView.Name = "FigureDataGridView";
+            this.FigureDataGridView.RowHeadersVisible = false;
+            this.FigureDataGridView.RowTemplate.Height = 25;
+            this.FigureDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.FigureDataGridView.Size = new System.Drawing.Size(406, 249);
+            this.FigureDataGridView.TabIndex = 0;
+            // 
+            // figureEventArgsBindingSource
+            // 
+            this.figureEventArgsBindingSource.DataSource = typeof(WinFormsApp.FigureEventArgs);
             // 
             // menuStrip1
             // 
@@ -160,6 +151,19 @@ namespace WinFormsApp
             this.FilterButton.UseVisualStyleBackColor = true;
             this.FilterButton.Click += new System.EventHandler(this.FilterButton_Click);
             // 
+            // figureListFilteredBindingSource
+            // 
+            this.figureListFilteredBindingSource.DataMember = "FigureListFiltered";
+            this.figureListFilteredBindingSource.DataSource = this.figureEventArgsBindingSource;
+            // 
+            // figureEventArgsBindingSource1
+            // 
+            this.figureEventArgsBindingSource1.DataSource = typeof(WinFormsApp.FigureEventArgs);
+            // 
+            // figureEventArgsBindingSource2
+            // 
+            this.figureEventArgsBindingSource2.DataSource = typeof(WinFormsApp.FigureEventArgs);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -177,21 +181,20 @@ namespace WinFormsApp
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Area Calculator";
-            ((System.ComponentModel.ISupportInitialize)(this.FigureDataGridView)).EndInit();
             this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.FigureDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.figureEventArgsBindingSource)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.figureListFilteredBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.figureEventArgsBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.figureEventArgsBindingSource2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private DataGridView FigureDataGridView;
-        private DataGridViewTextBoxColumn FigureTypeColumn;
-        private DataGridViewTextBoxColumn Parameters;
-        private DataGridViewTextBoxColumn AreaColumn;
         private GroupBox groupBox1;
         private MenuStrip menuStrip1;
         private ToolStripMenuItem fileToolStripMenuItem;
@@ -201,5 +204,10 @@ namespace WinFormsApp
         private Button RemoveButton;
         private Button ClearButton;
         private Button FilterButton;
+        private BindingSource figureEventArgsBindingSource;
+        private BindingSource figureEventArgsBindingSource2;
+        private BindingSource figureListFilteredBindingSource;
+        private BindingSource figureEventArgsBindingSource1;
+        private DataGridView FigureDataGridView;
     }
 }
