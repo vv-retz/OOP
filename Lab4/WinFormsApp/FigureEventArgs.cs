@@ -1,5 +1,4 @@
 using Model;
-using System.ComponentModel;
 
 namespace WinFormsApp
 {
@@ -20,20 +19,6 @@ namespace WinFormsApp
         public FigureEventArgs(FigureBase figure)
         {
             Figure = figure;
-        }
-
-        /// <summary>
-        /// Filtered figure list.
-        /// </summary>
-        public BindingList<FigureBase> FigureListFiltered { get; private set; }
-
-        /// <summary>
-        /// Constructor of event FigureEventArgs class with filtered figure list.
-        /// </summary>
-        /// <param name="figureListFiltered">Filtered figure list.</param>
-        public FigureEventArgs(BindingList<FigureBase> figureListFiltered)
-        {
-            FigureListFiltered = figureListFiltered;
         }
     }
 }

@@ -27,12 +27,12 @@ namespace WinFormsApp
         /// <summary>
         /// Handler to event of filtering figure.
         /// </summary>
-        private EventHandler<FigureEventArgs> _figureListFiltered;
+        private EventHandler<FigureListEventArgs> _figureListFiltered;
 
         /// <summary>
         /// EventHandler _figureListFiltered field's property.
         /// </summary>
-        public EventHandler<FigureEventArgs> FigureListFiltered
+        public EventHandler<FigureListEventArgs> FigureListFiltered
         {
             get => _figureListFiltered;
             set => _figureListFiltered = value;
@@ -129,7 +129,7 @@ namespace WinFormsApp
                 {
                     action[0].Invoke(typeFilteredList);
 
-                    var eventArgs = new FigureEventArgs
+                    var eventArgs = new FigureListEventArgs
                         (typeFilteredList);
                     FigureListFiltered?.Invoke(this, eventArgs);
                 }
@@ -157,7 +157,7 @@ namespace WinFormsApp
                         action[1].Invoke(typeFilteredList);
                     }
 
-                    var eventArgs = new FigureEventArgs
+                    var eventArgs = new FigureListEventArgs
                         (valueFilteredList);
                     FigureListFiltered?.Invoke(this, eventArgs);
                 }
@@ -171,7 +171,7 @@ namespace WinFormsApp
         /// <param name="e">Event argument.</param>
         private void ResetButton_Click(object sender, EventArgs e)
         {
-            var eventArgs = new FigureEventArgs(FigureListMain);
+            var eventArgs = new FigureListEventArgs(FigureListMain);
             FigureListFiltered?.Invoke(this, eventArgs);
         }
     }
