@@ -184,8 +184,24 @@ namespace WinFormsApp
                 if (exception.GetType() ==
                     typeof(InvalidOperationException))
                 {
-                    _ = MessageBox.Show("Error!\nThe data structure of" +
+                    // TODO: NaN
+                    if (exception.InnerException.GetType() ==
+                        typeof(ArgumentOutOfRangeException))
+                    {
+                        _ = MessageBox.Show("Error!\nSome parameters have" +
+                            " NaN value.");
+                    }
+                    else if (exception.InnerException.GetType() ==
+                        typeof(ArgumentException))
+                    {
+                        _ = MessageBox.Show("Error!\nSome parameters are" +
+                            " equals to 0 or lower.");
+                    }
+                    else
+                    {
+                        _ = MessageBox.Show("Error!\nThe data structure of" +
                             " the uploaded file is broken.");
+                    }
                 }
                 else
                 {
