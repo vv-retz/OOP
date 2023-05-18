@@ -28,12 +28,18 @@ namespace Model
         public abstract double Area { get; }
 
         /// <summary>
-        /// Method which check sign of lenght of line segment.
+        /// Method which check None and negative of length of line segment.
         /// </summary>
         /// <param name="lineSegment">Length of the segment.</param>
         /// <returns>Length of the line segment.</returns>
         protected double CheckValue(double lineSegment)
         {
+            if (double.IsNaN(lineSegment))
+            {
+                throw new ArgumentOutOfRangeException("The length of the" +
+                " segment must not be NaN.");
+            }
+
             return lineSegment <= 0
                 ? throw new ArgumentException("The length of the" +
                 " segment must be positive.")
