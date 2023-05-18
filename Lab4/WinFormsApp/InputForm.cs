@@ -95,7 +95,8 @@ namespace WinFormsApp
                     var chosenFigureControl =
                         _comboBoxToUserControl[chosenFigure];
                     var eventArgs = new FigureEventArgs
-                        (((FigureBaseUserControl)chosenFigureControl).GetFigure());
+                        (((FigureBaseUserControl)chosenFigureControl).
+                        GetFigure());
 
                     FigureAdded?.Invoke(this, eventArgs);
                 }

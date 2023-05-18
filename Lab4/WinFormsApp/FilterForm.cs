@@ -83,7 +83,8 @@ namespace WinFormsApp
                             FigureTypeCheckedListBox.CheckedItems)
                         {
                             if (figure.GetType() ==
-                                _figureTypes[_listBoxToFigureType[checkedFigure.ToString()]])
+                                _figureTypes[_listBoxToFigureType
+                                [checkedFigure.ToString()]])
                             {
                                 typeFilteredList.Add(figure);
                             }
@@ -98,9 +99,11 @@ namespace WinFormsApp
                     foreach (var figure in typeFilteredList)
                     {
                         if (((IAreaCalculatable)figure).Calculate() >=
-                                Convert.ToDouble(LowerBoundTextBox.Text.ReplaceByComma())
+                                Convert.ToDouble(LowerBoundTextBox.Text.
+                                ReplaceByComma())
                             && ((IAreaCalculatable)figure).Calculate() <=
-                                Convert.ToDouble(UpperBoundTextBox.Text.ReplaceByComma()))
+                                Convert.ToDouble(UpperBoundTextBox.Text.
+                                ReplaceByComma()))
                         {
                             valueFilteredList.Add(figure);
                         }
@@ -108,9 +111,11 @@ namespace WinFormsApp
                 })
             };
 
-            var upperBoundFilled = double.TryParse(UpperBoundTextBox.Text.ReplaceByComma(),
+            var upperBoundFilled = double.TryParse(UpperBoundTextBox.Text.
+                ReplaceByComma(),
                 out double upperBound);
-            var lowerBoundFilled = double.TryParse(LowerBoundTextBox.Text.ReplaceByComma(),
+            var lowerBoundFilled = double.TryParse(LowerBoundTextBox.Text.
+                ReplaceByComma(),
                 out double lowerBound);
 
             if (string.IsNullOrEmpty(UpperBoundTextBox.Text) &&

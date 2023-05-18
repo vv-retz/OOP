@@ -172,7 +172,8 @@ namespace WinFormsApp
             {
                 using (var file = new StreamReader(path))
                 {
-                    _figureList = (BindingList<FigureBase>)xmlSerializer.Deserialize(file);
+                    _figureList = (BindingList<FigureBase>)xmlSerializer.
+                        Deserialize(file);
                 }
 
                 FigureDataGridView.DataSource = _figureList;
