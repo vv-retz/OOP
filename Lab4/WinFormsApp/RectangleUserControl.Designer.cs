@@ -47,7 +47,7 @@ namespace WinFormsApp
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(11, 54);
+            this.label2.Location = new System.Drawing.Point(3, 35);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(18, 15);
             this.label2.TabIndex = 1;
@@ -56,7 +56,7 @@ namespace WinFormsApp
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(11, 83);
+            this.label3.Location = new System.Drawing.Point(3, 64);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(17, 15);
             this.label3.TabIndex = 2;
@@ -64,14 +64,14 @@ namespace WinFormsApp
             // 
             // sideA
             // 
-            this.sideA.Location = new System.Drawing.Point(35, 51);
+            this.sideA.Location = new System.Drawing.Point(27, 35);
             this.sideA.Name = "sideA";
             this.sideA.Size = new System.Drawing.Size(100, 23);
             this.sideA.TabIndex = 3;
             // 
             // sideB
             // 
-            this.sideB.Location = new System.Drawing.Point(35, 80);
+            this.sideB.Location = new System.Drawing.Point(27, 64);
             this.sideB.Name = "sideB";
             this.sideB.Size = new System.Drawing.Size(100, 23);
             this.sideB.TabIndex = 4;

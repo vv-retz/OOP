@@ -51,6 +51,8 @@ namespace WinFormsApp
 
             ComboBoxFigureTypes.SelectedIndexChanged +=
                 ComboBoxFigureTypes_SelectedIndexChanged;
+
+            CancelButton.Enabled = false;
         }
 
         /// <summary>
@@ -63,6 +65,8 @@ namespace WinFormsApp
         {
             string selectedState =
                 ComboBoxFigureTypes.SelectedItem.ToString();
+
+            CancelButton.Enabled = true;
 
             foreach (var (figureType, userControl) in
                 _comboBoxToUserControl)

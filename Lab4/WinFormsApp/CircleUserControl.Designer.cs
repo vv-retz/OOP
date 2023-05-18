@@ -45,15 +45,15 @@ namespace WinFormsApp
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(11, 54);
+            this.label2.Location = new System.Drawing.Point(3, 35);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(18, 15);
+            this.label2.Size = new System.Drawing.Size(17, 15);
             this.label2.TabIndex = 1;
             this.label2.Text = "R:";
             // 
             // radius
             // 
-            this.radius.Location = new System.Drawing.Point(35, 51);
+            this.radius.Location = new System.Drawing.Point(27, 35);
             this.radius.Name = "radius";
             this.radius.Size = new System.Drawing.Size(100, 23);
             this.radius.TabIndex = 2;

@@ -39,22 +39,22 @@ namespace WinFormsApp
             // 
             // sideA
             // 
-            this.sideA.Location = new System.Drawing.Point(38, 35);
-            this.sideA.Name = "textBox1";
+            this.sideA.Location = new System.Drawing.Point(27, 35);
+            this.sideA.Name = "sideA";
             this.sideA.Size = new System.Drawing.Size(100, 23);
             this.sideA.TabIndex = 0;
             // 
             // sideB
             // 
-            this.sideB.Location = new System.Drawing.Point(38, 64);
-            this.sideB.Name = "textBox2";
+            this.sideB.Location = new System.Drawing.Point(27, 64);
+            this.sideB.Name = "sideB";
             this.sideB.Size = new System.Drawing.Size(100, 23);
             this.sideB.TabIndex = 1;
             // 
             // sideC
             // 
-            this.sideC.Location = new System.Drawing.Point(38, 93);
-            this.sideC.Name = "textBox3";
+            this.sideC.Location = new System.Drawing.Point(27, 93);
+            this.sideC.Name = "sideC";
             this.sideC.Size = new System.Drawing.Size(100, 23);
             this.sideC.TabIndex = 2;
             // 
@@ -70,7 +70,7 @@ namespace WinFormsApp
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(14, 35);
+            this.label2.Location = new System.Drawing.Point(3, 35);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(18, 15);
             this.label2.TabIndex = 4;
@@ -79,7 +79,7 @@ namespace WinFormsApp
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(14, 64);
+            this.label3.Location = new System.Drawing.Point(3, 64);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(17, 15);
             this.label3.TabIndex = 5;
@@ -88,7 +88,7 @@ namespace WinFormsApp
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(14, 93);
+            this.label4.Location = new System.Drawing.Point(3, 93);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(18, 15);
             this.label4.TabIndex = 6;

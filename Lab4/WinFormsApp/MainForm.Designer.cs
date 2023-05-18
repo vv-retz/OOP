@@ -186,7 +186,6 @@ namespace WinFormsApp
             ((System.ComponentModel.ISupportInitialize)(this.figureEventArgsBindingSource)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.figureListFilteredBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.figureEventArgsBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.figureEventArgsBindingSource2)).EndInit();
             this.ResumeLayout(false);

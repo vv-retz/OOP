@@ -184,13 +184,8 @@ namespace WinFormsApp
                 if (exception.GetType() ==
                     typeof(InvalidOperationException))
                 {
-                    _ = MessageBox.Show("File upload error.");
-                }
-                else if (exception.GetType() ==
-                    typeof(ArgumentException))
-                {
-                    _ = MessageBox.Show("The data structure of the " +
-                        "uploaded file is broken.");
+                    _ = MessageBox.Show("Error!\nThe data structure of" +
+                            " the uploaded file is broken.");
                 }
                 else
                 {
