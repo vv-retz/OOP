@@ -62,7 +62,7 @@ namespace WinFormsApp
             // 
             // rectangleUserControl1
             // 
-            this.rectangleUserControl1.Location = new System.Drawing.Point(6, 15);
+            this.rectangleUserControl1.Location = new System.Drawing.Point(6, 16);
             this.rectangleUserControl1.Name = "rectangleUserControl1";
             this.rectangleUserControl1.Size = new System.Drawing.Size(137, 129);
             this.rectangleUserControl1.TabIndex = 1;
@@ -70,7 +70,7 @@ namespace WinFormsApp
             // 
             // circleUserControl1
             // 
-            this.circleUserControl1.Location = new System.Drawing.Point(6, 14);
+            this.circleUserControl1.Location = new System.Drawing.Point(6, 16);
             this.circleUserControl1.Name = "circleUserControl1";
             this.circleUserControl1.Size = new System.Drawing.Size(137, 129);
             this.circleUserControl1.TabIndex = 0;
