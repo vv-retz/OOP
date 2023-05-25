@@ -165,6 +165,59 @@ namespace WinFormsApp
             }
         }
 
+        // Need to return 2 vars
+
+        /// <summary>
+        /// MM.
+        /// </summary>
+        /// <param name="value">MM.</param>
+        /// <param name="type">MM.</param>
+        /// <returns>MM.</returns>
+        public static BindingList<FigureBase> FigureFilter(BindingList<FigureBase> value,
+            BindingList<FigureBase> type)
+        {
+            var action = new List<Action<BindingList<FigureBase>>>
+            {
+                new Action<BindingList<FigureBase>>
+                (
+                (BindingList<FigureBase> type) =>
+                {
+                    foreach (var figure in FigureListMain)
+                    {
+                        foreach (var checkedFigure in
+                            FigureTypeCheckedListBox.CheckedItems)
+                        {
+                            if (figure.GetType() ==
+                                _figureTypes[_listBoxToFigureType
+                                [checkedFigure.ToString()]])
+                            {
+                                type.Add(figure);
+                            }
+                        }
+                    }
+                }),
+
+                new Action<BindingList<FigureBase>>
+                (
+                (BindingList<FigureBase> type) =>
+                {
+                    foreach (var figure in type)
+                    {
+                        if (((IAreaCalculatable)figure).Calculate() >=
+                                Convert.ToDouble(LowerBoundTextBox.Text.
+                                ReplaceByComma())
+                            && ((IAreaCalculatable)figure).Calculate() <=
+                                Convert.ToDouble(UpperBoundTextBox.Text.
+                                ReplaceByComma()))
+                        {
+                            value.Add(figure);
+                        }
+                    }
+                })
+            };
+            return value;
+        }
+
         /// <summary>
         /// Click event to reset information in DataGrid to initial values.
         /// </summary>
