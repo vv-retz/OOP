@@ -73,6 +73,8 @@ namespace WinFormsApp
             this.FigureDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.FigureDataGridView.Size = new System.Drawing.Size(406, 249);
             this.FigureDataGridView.TabIndex = 0;
+            this.FigureDataGridView.AllowUserToResizeRows = false;
+            this.FigureDataGridView.AllowUserToResizeColumns = false;
             // 
             // figureEventArgsBindingSource
             // 

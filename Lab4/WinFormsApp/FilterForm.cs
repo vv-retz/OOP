@@ -68,7 +68,7 @@ namespace WinFormsApp
         /// <param name="e">Event argument.</param>
         private void FilterButton_Click(object sender, EventArgs e)
         {
-            // TODO: refactoring
+            // TODO(+): refactoring
             var valueFilteredList = new BindingList<FigureBase>();
             var typeFilteredList = new BindingList<FigureBase>();
 
@@ -126,9 +126,9 @@ namespace WinFormsApp
         }
 
         /// <summary>
-        /// MM.
+        /// Filter figure by type.
         /// </summary>
-        /// <param name="type">MM.</param>
+        /// <param name="type">Type of figure.</param>
         public void FigureTypeFilter(
             BindingList<FigureBase> type)
         {
@@ -155,10 +155,10 @@ namespace WinFormsApp
         }
 
         /// <summary>
-        /// fff.
+        /// Filter figure by area.
         /// </summary>
-        /// <param name="type">ggg.</param>
-        /// <param name="value">hh.</param>
+        /// <param name="type">Type of figure.</param>
+        /// <param name="value">Area's value.</param>
         public void FigureAreaFilter(BindingList<FigureBase> type,
             BindingList<FigureBase> value)
         {
