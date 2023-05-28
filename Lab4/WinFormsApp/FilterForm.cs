@@ -72,46 +72,6 @@ namespace WinFormsApp
             var valueFilteredList = new BindingList<FigureBase>();
             var typeFilteredList = new BindingList<FigureBase>();
 
-            var action = new List<Action<BindingList<FigureBase>>>
-            {
-                new Action<BindingList<FigureBase>>
-                (
-                (BindingList<FigureBase> typeFilteredList) =>
-                {
-                    foreach (var figure in FigureListMain)
-                    {
-                        foreach (var checkedFigure in
-                            FigureTypeCheckedListBox.CheckedItems)
-                        {
-                            if (figure.GetType() ==
-                                _figureTypes[_listBoxToFigureType
-                                [checkedFigure.ToString()]])
-                            {
-                                typeFilteredList.Add(figure);
-                            }
-                        }
-                    }
-                }),
-
-                new Action<BindingList<FigureBase>>
-                (
-                (BindingList<FigureBase> typeFilteredList) =>
-                {
-                    foreach (var figure in typeFilteredList)
-                    {
-                        if (((IAreaCalculatable)figure).Calculate() >=
-                                Convert.ToDouble(LowerBoundTextBox.Text.
-                                ReplaceByComma())
-                            && ((IAreaCalculatable)figure).Calculate() <=
-                                Convert.ToDouble(UpperBoundTextBox.Text.
-                                ReplaceByComma()))
-                        {
-                            valueFilteredList.Add(figure);
-                        }
-                    }
-                })
-            };
-
             var upperBoundFilled = double.TryParse(UpperBoundTextBox.Text.
                 ReplaceByComma(),
                 out double upperBound);
@@ -128,7 +88,7 @@ namespace WinFormsApp
                 }
                 else
                 {
-                    action[0].Invoke(typeFilteredList);
+                    FigureTypeFilter(typeFilteredList);
 
                     var eventArgs = new FigureListEventArgs
                         (typeFilteredList);
@@ -150,12 +110,12 @@ namespace WinFormsApp
                     if (FigureTypeCheckedListBox.SelectedItems.Count == 0)
                     {
                         typeFilteredList = FigureListMain;
-                        action[1].Invoke(typeFilteredList);
+                        FigureAreaFilter(typeFilteredList, valueFilteredList);
                     }
                     else
                     {
-                        action[0].Invoke(typeFilteredList);
-                        action[1].Invoke(typeFilteredList);
+                        FigureTypeFilter(typeFilteredList);
+                        FigureAreaFilter(typeFilteredList, valueFilteredList);
                     }
 
                     var eventArgs = new FigureListEventArgs
@@ -165,57 +125,62 @@ namespace WinFormsApp
             }
         }
 
-        // Need to return 2 vars
-
         /// <summary>
         /// MM.
         /// </summary>
-        /// <param name="value">MM.</param>
         /// <param name="type">MM.</param>
-        /// <returns>MM.</returns>
-        public static BindingList<FigureBase> FigureFilter(BindingList<FigureBase> value,
+        public void FigureTypeFilter(
             BindingList<FigureBase> type)
         {
-            var action = new List<Action<BindingList<FigureBase>>>
+            var action = new Action<BindingList<FigureBase>>
+            (
+            (BindingList<FigureBase> type) =>
             {
-                new Action<BindingList<FigureBase>>
-                (
-                (BindingList<FigureBase> type) =>
+                foreach (var figure in FigureListMain)
                 {
-                    foreach (var figure in FigureListMain)
+                    foreach (var checkedFigure in
+                        FigureTypeCheckedListBox.CheckedItems)
                     {
-                        foreach (var checkedFigure in
-                            FigureTypeCheckedListBox.CheckedItems)
+                        if (figure.GetType() ==
+                            _figureTypes[_listBoxToFigureType
+                            [checkedFigure.ToString()]])
                         {
-                            if (figure.GetType() ==
-                                _figureTypes[_listBoxToFigureType
-                                [checkedFigure.ToString()]])
-                            {
-                                type.Add(figure);
-                            }
+                            type.Add(figure);
                         }
                     }
-                }),
+                }
+            });
 
-                new Action<BindingList<FigureBase>>
-                (
-                (BindingList<FigureBase> type) =>
+            action.Invoke(type);
+        }
+
+        /// <summary>
+        /// fff.
+        /// </summary>
+        /// <param name="type">ggg.</param>
+        /// <param name="value">hh.</param>
+        public void FigureAreaFilter(BindingList<FigureBase> type,
+            BindingList<FigureBase> value)
+        {
+            var action = new Action<BindingList<FigureBase>>
+            (
+            (BindingList<FigureBase> type) =>
+            {
+                foreach (var figure in type)
                 {
-                    foreach (var figure in type)
+                    if (((IAreaCalculatable)figure).Calculate() >=
+                            Convert.ToDouble(LowerBoundTextBox.Text.
+                            ReplaceByComma())
+                        && ((IAreaCalculatable)figure).Calculate() <=
+                            Convert.ToDouble(UpperBoundTextBox.Text.
+                            ReplaceByComma()))
                     {
-                        if (((IAreaCalculatable)figure).Calculate() >=
-                                Convert.ToDouble(LowerBoundTextBox.Text.
-                                ReplaceByComma())
-                            && ((IAreaCalculatable)figure).Calculate() <=
-                                Convert.ToDouble(UpperBoundTextBox.Text.
-                                ReplaceByComma()))
-                        {
-                            value.Add(figure);
-                        }
+                        value.Add(figure);
                     }
-                })
-            };
-            return value;
+                }
+            });
+
+            action.Invoke(type);
         }
 
         /// <summary>
