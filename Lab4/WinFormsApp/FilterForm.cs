@@ -68,7 +68,6 @@ namespace WinFormsApp
         /// <param name="e">Event argument.</param>
         private void FilterButton_Click(object sender, EventArgs e)
         {
-            // TODO(+): refactoring
             var valueFilteredList = new BindingList<FigureBase>();
             var typeFilteredList = new BindingList<FigureBase>();
 

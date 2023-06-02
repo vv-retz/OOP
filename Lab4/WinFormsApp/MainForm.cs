@@ -184,7 +184,6 @@ namespace WinFormsApp
                 if (exception.GetType() ==
                     typeof(InvalidOperationException))
                 {
-                    // TODO(+): NaN
                     if (exception.InnerException.GetType() ==
                         typeof(ArgumentOutOfRangeException))
                     {
