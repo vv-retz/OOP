@@ -45,5 +45,11 @@ namespace Model
                 " segment must be positive.")
                 : lineSegment;
         }
+
+        /// <summary>
+        /// Method which calculate area.
+        /// </summary>
+        /// <returns>Area.</returns>
+        public abstract double Calculate { get; }
     }
 }

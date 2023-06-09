@@ -5,7 +5,7 @@ namespace Model
     /// <summary>
     /// Rectangle class.
     /// </summary>
-    public class Rectangle : FigureBase, IAreaCalculatable
+    public class Rectangle : FigureBase
     {
         /// <summary>
         /// Side A length.
@@ -67,15 +67,12 @@ namespace Model
         /// <summary>
         /// Area field's property.
         /// </summary>
-        public override double Area => Calculate();
+        public override double Area => Calculate;
 
         /// <summary>
         /// Method which calcualte rectangle area.
         /// </summary>
         /// <returns>Rectangle area.</returns>
-        public double Calculate()
-        {
-            return Math.Round(SideA * SideB, 3);
-        }
+        public override double Calculate => Math.Round(SideA * SideB, 3);
     }
 }

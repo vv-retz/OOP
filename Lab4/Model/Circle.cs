@@ -5,7 +5,7 @@ namespace Model
     /// <summary>
     /// Circle class.
     /// </summary>
-    public class Circle : FigureBase, IAreaCalculatable
+    public class Circle : FigureBase
     {
         /// <summary>
         /// Circle radius.
@@ -50,15 +50,12 @@ namespace Model
         /// <summary>
         /// Area field's property.
         /// </summary>
-        public override double Area => Calculate();
+        public override double Area => Calculate;
 
         /// <summary>
         /// Method which calcualte circle area.
         /// </summary>
         /// <returns>Circle area.</returns>
-        public double Calculate()
-        {
-            return Math.Round(Math.Pow(Radius, 2) * Math.PI, 3);
-        }
+        public override double Calculate => Math.Round(Math.Pow(Radius, 2) * Math.PI, 3);
     }
 }

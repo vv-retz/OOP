@@ -11,7 +11,7 @@ namespace WinFormsApp
         /// Dictionary of motion user controls.
         /// </summary>
         private readonly Dictionary<string,
-            UserControl> _comboBoxToUserControl;
+            FigureBaseUserControl> _comboBoxToUserControl;
 
         /// <summary>
         /// Handler to event of adding motion.
@@ -40,7 +40,7 @@ namespace WinFormsApp
             string[] figureTypes = { "Rectangle", "Triangle",
                 "Circle" };
 
-            _comboBoxToUserControl = new Dictionary<string, UserControl>()
+            _comboBoxToUserControl = new Dictionary<string, FigureBaseUserControl>()
             {
                 {figureTypes[0], rectangleUserControl1},
                 {figureTypes[1], triangleUserControl1},
@@ -99,7 +99,7 @@ namespace WinFormsApp
                     var chosenFigureControl =
                         _comboBoxToUserControl[chosenFigure];
                     var eventArgs = new FigureEventArgs
-                        (((FigureBaseUserControl)chosenFigureControl).
+                        ((chosenFigureControl).
                         GetFigure());
 
                     FigureAdded?.Invoke(this, eventArgs);

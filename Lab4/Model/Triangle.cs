@@ -5,7 +5,7 @@ namespace Model
     /// <summary>
     /// Triangle class.
     /// </summary>
-    public class Triangle : FigureBase, IAreaCalculatable
+    public class Triangle : FigureBase
     {
         /// <summary>
         /// Side A length.
@@ -105,19 +105,17 @@ namespace Model
         /// <summary>
         /// Area field's property.
         /// </summary>
-        public override double Area => Calculate();
+        public override double Area => Calculate;
+
+        private double _halfPer = (SideA + SideB + SideC) / 2;
 
         /// <summary>
         /// Method which calcualte triangle area.
         /// </summary>
         /// <returns>Triangle area.</returns>
-        public double Calculate()
-        {
-            double p = (SideA + SideB + SideC) / 2;
-            return Math.Round(Math.Sqrt(p *
-                      (p - SideA) *
-                      (p - SideB) *
-                      (p - SideC)), 3);
-        }
+        public double Calculate => Math.Round(Math.Sqrt(_halfPer *
+                      (_halfPer - _sideA) *
+                      (_halfPer - _sideB) *
+                      (_halfPer - _sideC)), 3);
     }
 }
